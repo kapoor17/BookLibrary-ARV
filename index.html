@@ -5,20 +5,21 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Book Library</title>
+    <!-- <link rel="stylesheet" href="./FullPage JS/fullpage.min.css"> -->
     <link rel="stylesheet" href="./bootstrap-5.1.3-dist/css/bootstrap.css">
     <link rel="stylesheet" href="./style.css">
 </head>
 <body>
 
-    <div class="wrapper" id="accordian-cover">
+    <div class="wrapper" id="accordion-cover">
         <div class="container-sm">
             <div class="book-cover">
                 <h1 class="book-title">Book Title</h1>
                 <h3 class="preview-button"  data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">Preview</h3>
             </div>
-            <div class="content-library" id="collapseExample">
+            <div class="content-library border border-danger" id="collapseExample">
                 <div class="accordion accordion-flush" id="accordionFlushExample">
-                    <div class="accordion-item with-preview">
+                    <div class="accordion-item with-preview current-slide">
                         <h2 class="accordion-header" id="flush-headingOne">
                             <p class="accordion-preview collapsed">
                                 Intro
@@ -41,7 +42,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="accordion-item with-preview">
+                    <div class="accordion-item with-sub-chapters">
                         <h2 class="accordion-header" id="flush-headingThree">
                             <h2 class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseThree" aria-expanded="false" aria-controls="flush-collapseThree">
                                 The Main Event
@@ -53,9 +54,9 @@
                                 <div class="accordion accordion-flush" id="accordionFlushExample">
                                     <div class="accordion-item with-preview">
                                         <h2 class="accordion-header" id="flush-headingOne">
-                                            <p class="accordion-preview collapsed">
+                                            <a href="#2" class="accordion-preview collapsed">
                                                 Intro
-                                            </p>
+                                            </a>
                                         </h2>
                                         <div class="corner-ribbon">preview</div>
                                     </div>
@@ -99,28 +100,28 @@
             </div>
         </div>
     </div>
-    <div class="wrapper" id="main-book">
+    <div class="wrapper slide-main-book-out" id="main-book">
         <div class="container-sm">
+            <div class="header">
+                <button class="return"><</button>
+                <div class="chapter-title">Title</div>
+            </div>
             <div class="book-content">
-                <div class="header">
-                    <button class="return"><</button>
-                    <div class="chapter-title">Title</div>
+                <div class="chapters with-preview current-slide" id="0">intro-1</div>
+                <div class="chapters" id="1">the story of something</div>
+                <div class="chapters with-sub-chapters">
+                    <div class="chapters with-preview" id="2">intro-2</div>
+                    <div class="chapters" id="3">the stroy of something-2</div>
                 </div>
-                <div class="chapters intro">intro</div>
-                <div class="chapters the-story-of-something">the story of something</div>
-                <div class="chapters the-main-event">
-                    <div class="chapters intro">intro</div>
-                    <div class="chapters the-story-of-something">the stroy of something</div>
-                </div>
-                <div class="chapters road-trip">road trip</div>
-                <div class="chapters the-new-farm-story">the new farm story</div>
+                <div class="chapters" id="4">road trip</div>
+                <div class="chapters" id="5">the new farm story</div>
             </div>
         </div>
 
     </div>
 
     
-
+    <!-- <script src="./FullPage JS/fullpage.min.js"></script> -->
     <script src="./bootstrap-5.1.3-dist/js/bootstrap.bundle.js"></script>
     <script src="./app.js"></script>
 </body>
