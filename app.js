@@ -9,7 +9,7 @@ const bookChapters = mainBook.querySelectorAll(".chapters.with-preview");
 
 
 console.log(bookContent);
-console.log(bookChapters);
+// console.log(bookChapters);
 
 bookPreview.addEventListener("click",()=>{
     bookCover.classList.toggle("variable-height-class");
@@ -17,7 +17,6 @@ bookPreview.addEventListener("click",()=>{
 
 bookContent.forEach((content,index)=>{
     content.addEventListener("click",()=>{
-        // window.location=index.href;
         mainBook.classList.remove("slide-main-book-out");
         mainBook.classList.add("slide-main-book-in");
     })

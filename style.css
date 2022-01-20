@@ -4,22 +4,20 @@
   box-sizing: border-box;
 }
 body {
-  background-color: pink;
+  background-color: red;
   color: black;
   height: 100vh;
   width: 100vw;
-  /* overflow: hidden; */
+  position: relative;
 }
-.wrapper {
-  width: 100%;
+.containers {
   height: 100vh;
 }
-.container-sm {
-  padding: 0;
-  max-width: 850px;
+#accordion-cover {
+  height: 100vh;
 }
 .book-cover {
-  background-color: rgb(143, 195, 241);
+  background-color: rgb(143, 241, 190);
   height: 100vh;
   display: flex;
   flex-direction: column;
@@ -34,9 +32,10 @@ body {
 .content-library {
   background-color: white;
   height: 50vh;
-  width: 100%;
+  width: 100vw;
+  overflow: scroll;
 
-  transition: all 0.75s ease-in;
+  transition: height 0.75s ease-in;
 }
 .accordion-item {
   position: relative;
@@ -46,7 +45,7 @@ body {
   position: relative;
   display: flex;
   align-items: center;
-  width: 100%;
+  width: 100vw;
   padding: 1rem 1.75rem;
   font-size: 1rem;
   color: #212529;
@@ -75,9 +74,10 @@ body {
   transform: rotate(-45deg);
   overflow: hidden;
 }
-
 #main-book {
   z-index: 10;
+  height: 100vh;
+  width: 100vw;
   position: absolute;
   top: 0;
 
@@ -91,11 +91,11 @@ body {
 }
 .header {
   background-color: rgb(143, 195, 241);
-
-  width: 100%;
+  z-index: 100;
+  width: 50%;
   height: 7.5vh;
-  position: sticky;
-  top: 0;
+  position: fixed;
+  top: 0%;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -113,12 +113,17 @@ body {
   border-radius: 3px;
   padding: 10px;
 }
+.book-content {
+  height: 100vh;
+  overflow: scroll;
+}
 .chapters {
+  padding-top: 7.5vh;
   background-color: #fff;
 
-  border: 2px solid red;
-  width: 100%;
-  min-height: 92.5vh;
+  border: 1px solid red;
+  width: 100vw;
+  height: 100vh;
   display: flex;
   flex-direction: column;
   justify-content: center;

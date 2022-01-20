@@ -12,13 +12,13 @@
 <body>
 
     <div class="wrapper" id="accordion-cover">
-        <div class="container-sm">
+        <div class="containers">
             <div class="book-cover">
                 <h1 class="book-title">Book Title</h1>
                 <h3 class="preview-button"  data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">Preview</h3>
             </div>
-            <div class="content-library border border-danger" id="collapseExample">
-                <div class="accordion accordion-flush" id="accordionFlushExample">
+            <div class="content-library collapse" id="collapseExample">
+                <div class="accordion accordion-flush" id="accordionFlushExample" style="height: inherit;">
                     <div class="accordion-item with-preview current-slide">
                         <h2 class="accordion-header" id="flush-headingOne">
                             <p class="accordion-preview collapsed">
@@ -54,9 +54,9 @@
                                 <div class="accordion accordion-flush" id="accordionFlushExample">
                                     <div class="accordion-item with-preview">
                                         <h2 class="accordion-header" id="flush-headingOne">
-                                            <a href="#2" class="accordion-preview collapsed">
+                                            <p class="accordion-preview collapsed">
                                                 Intro
-                                            </a>
+                                            </p>
                                         </h2>
                                         <div class="corner-ribbon">preview</div>
                                     </div>
@@ -78,7 +78,12 @@
                             </p>
                         </h2>
                         <div id="flush-collapseFour" class="accordion-collapse collapse" aria-labelledby="flush-headingFour" data-bs-parent="#accordionFlushExample">
-                            <div class="accordion-body">Placeholder content for this accordion, which is intended to demonstrate the <code>.accordion-flush</code> class. This is the first item's accordion body.</div>
+                            <div class="accordion-body">
+                                <p class="chapter-mini-intro">In this chapter you will discover what happens when the idea finally evolves into something...</p>
+                                <h4 class="payment-prompt">Unlock this entire book and discover</h4>
+                                <div class="payment-gateway"></div>
+                                <button class="login-button">Member Login</button>
+                            </div>
                         </div>
                     </div>
                     <div class="accordion-item">
@@ -96,12 +101,13 @@
                             </div>
                         </div>
                     </div>
+                    
                 </div>
             </div>
         </div>
     </div>
     <div class="wrapper slide-main-book-out" id="main-book">
-        <div class="container-sm">
+        <div class="containers">
             <div class="header">
                 <button class="return"><</button>
                 <div class="chapter-title">Title</div>
@@ -117,7 +123,6 @@
                 <div class="chapters" id="5">the new farm story</div>
             </div>
         </div>
-
     </div>
 
     
