@@ -7,6 +7,7 @@
     <title>Book Library</title>
     <!-- <link rel="stylesheet" href="./FullPage JS/fullpage.min.css"> -->
     <link rel="stylesheet" href="./Assets/bootstrap/css/bootstrap.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css">
     <link rel="stylesheet" href="./style.css">
 </head>
 <body>
@@ -18,6 +19,8 @@
                 <h3 class="preview-button"  data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">Preview</h3>
             </div>
             <div class="content-library collapse" id="collapseExample">
+                    <i class="go-back bi bi-arrow-up-square return" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample"></i>
+
                 <div class="accordion accordion-flush" id="accordionFlushExample" style="height: inherit;">
                     <div class="accordion-item with-preview current-slide">
                         <h3 class="accordion-header" id="flush-headingOne">
@@ -109,7 +112,7 @@
     <div class="wrapper slide-main-book-out" id="main-book">
         <div class="containers">
             <div class="header">
-                <button class="return"><</button>
+                <i class="bi bi-arrow-left-square return"></i>
                 <div class="chapter-title">Title</div>
             </div>
             <div class="book-content">
@@ -127,6 +130,7 @@
 
     
     <!-- <script src="./FullPage JS/fullpage.min.js"></script> -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="./Assets/bootstrap/js/bootstrap.bundle.js"></script>
     <script src="./app.js"></script>
 </body>

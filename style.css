@@ -8,6 +8,8 @@
   --preview-accent: #e43;
 
   --book-cover-fallback: rgb(218, 218, 253);
+
+  --header-heights: 3rem;
 }
 @font-face {
   font-family: book-text-font;
@@ -95,7 +97,7 @@ img {
   transition: height 0.75s ease-in;
 }
 .variable-height-class {
-  height: 50vh;
+  height: 0vh;
 }
 .content-library,
 .accordion-item .accordion-preview,
@@ -105,11 +107,38 @@ img {
   background-color: var(--white);
 }
 .content-library {
-  height: 50vh;
+  height: calc(100vh-calc(--header-height));
   width: 100vw;
+
+  position: relative;
   overflow: scroll;
 
+  padding-bottom: 100vh;
+
   transition: height 0.75s ease-in;
+}
+.content-library .go-back {
+  height: var(--header-heights); /*==pt-5*/
+  width: 100%;
+
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+
+  background-color: var(--book-cover-fallback);
+  font-size: 2rem;
+
+  z-index: 11;
+  padding: 0.5rem 0rem;
+}
+.fixed {
+  position: fixed;
+  top: 0%;
+}
+.accordion {
+  border: 2px solid red;
+  border-radius: 5% 5% 0 0;
+  overflow: hidden;
 }
 .accordion-item {
   position: relative;
@@ -172,7 +201,7 @@ img {
   z-index: 10;
   width: 100px;
   font-size: 0.52em;
-  background: var(--preview-accent);
+  background: var(--blue-accent);
   position: absolute;
   top: 10px;
   left: -32.5px;
@@ -186,7 +215,7 @@ img {
 
 #main-book {
   font-family: book-text-font;
-  z-index: 10;
+  z-index: 13;
   height: 100vh;
   width: 100vw;
   position: absolute;
@@ -202,9 +231,9 @@ img {
 }
 .header {
   background-color: var(--book-cover-fallback);
-  z-index: 100;
+  z-index: 14;
   width: 100%;
-  height: 7.5vh;
+  height: var(--header-heights);
   position: fixed;
   top: 0%;
   display: flex;
@@ -217,12 +246,12 @@ img {
   margin-right: auto;
 }
 .header .return {
+  cursor: pointer;
   background: none;
-  background-color: var(--white);
-  border: none;
-  border: 2px solid var(--black);
-  border-radius: 3px;
-  padding: 10px;
+  background-color: var(--book-cover);
+  padding: 0;
+  object-fit: cover;
+  font-size: 2rem;
 }
 .book-content {
   height: 100vh;
@@ -232,7 +261,7 @@ img {
   padding-top: 0;
 }
 .chapters {
-  padding-top: 7.5vh;
+  padding-top: var(--header-heights);
   background-color: var(--white);
 
   border: 1px solid red;
