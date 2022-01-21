@@ -5,9 +5,8 @@
   --black: #000;
   --white: rgb(248, 248, 248);
   --blue-accent: #075299;
-  --preview-accent: #e43;
 
-  --book-cover-fallback: rgb(218, 218, 253);
+  --book-cover-fallback: rgb(203, 203, 253);
 
   --header-heights: 3rem;
 }
@@ -99,6 +98,13 @@ img {
 .variable-height-class {
   height: 0vh;
 }
+.preview-button {
+  height: 100px;
+  width: 200px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 .content-library,
 .accordion-item .accordion-preview,
 .accordion-item .accordion-preview:not(.collapsed),
@@ -136,9 +142,12 @@ img {
   top: 0%;
 }
 .accordion {
-  border: 2px solid red;
-  border-radius: 5% 5% 0 0;
+  border-radius: 5.5% 5.5% 0 0;
   overflow: hidden;
+
+  box-shadow: 0px -150px var(--book-cover-fallback);
+
+  transition: all 0.25s ease;
 }
 .accordion-item {
   position: relative;
