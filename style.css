@@ -29,7 +29,7 @@ body {
   height: 100vh;
   width: 100vw;
 
-  /* overflow: hidden; */
+  overflow: hidden;
 }
 body {
   background-color: var(--white);
@@ -81,7 +81,6 @@ h4,
 img {
   max-width: 100%;
 }
-
 .containers,
 .book-cover,
 #accordion-cover {
@@ -243,36 +242,55 @@ img {
 }
 .header,
 .footer {
-  background-color: var(--book-cover-fallback);
   z-index: 14;
   width: 100%;
-  height: var(--header-heights);
   position: fixed;
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 10px;
 }
 .header {
+  padding: 10px;
+  height: var(--header-heights);
+  background-color: var(--book-cover-fallback);
   border-radius: 0 0 var(--border-radius) var(--border-radius);
   top: 0;
-}
-.footer {
-  justify-content: space-around;
-  border-radius: var(--border-radius) var(--border-radius) 0 0;
-  bottom: 0;
 }
 .header .chapter-title,
 .header .return {
   margin-right: auto;
 }
 .header .return,
-.footer > * {
-  cursor: pointer;
-  background: none;
-  background-color: var(--book-cover);
+.footer .controls > * {
   padding: 0;
   font-size: 2rem;
+}
+.footer {
+  transition: 0.75s ease;
+  flex-direction: column;
+  top: calc(100vh - var(--header-heights));
+}
+.footer.open {
+  top: 50vh;
+}
+.controls {
+  background-color: var(--book-cover-fallback);
+
+  border-radius: var(--border-radius) var(--border-radius) 0 0;
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+.controls .arrows {
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+.foot-notes {
+  overflow: scroll;
+  padding: 1em;
 }
 .book-content {
   height: 100vh;

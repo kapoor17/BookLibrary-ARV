@@ -13,12 +13,21 @@
     //main-book objects
 
     const mainBook=document.querySelector("#main-book");
+
     const returnButton=mainBook.querySelector(".return");
-    const chapterUp=mainBook.querySelector(".chapter-up");
-    const chapterDown=mainBook.querySelector(".chapter-down");
+    
     const chapterContainer=mainBook.querySelector(".book-content");
     const bookChapters = mainBook.querySelectorAll(".chapters");
     const bookChaptersWP = mainBook.querySelectorAll(".chapters.with-preview");
+    const footnote = mainBook.querySelector(".footnote")
+    
+    const footer = mainBook.querySelector(".footer");
+    const controls = footer.querySelector(".controls");
+    const arrows = controls.querySelector(".arrows");
+    const chapterUp=controls.querySelector(".chapter-up");
+    const chapterDown=controls.querySelector(".chapter-down");
+    const closeFootnote = controls.querySelector(".close-footnote");
+    const footnoteContainer = footer.querySelector(".foot-notes")
 
 //values from dom
     
@@ -80,6 +89,19 @@
         moveChapters(chapterContainer,currentChapter,prevChapter);
         
     })
+
+    footnote.addEventListener("click",()=>{
+        footer.classList.add("open");
+        arrows.classList.add("d-none");
+        closeFootnote.classList.remove("d-none");
+    })
+
+    closeFootnote.addEventListener("click",()=>{
+        footer.classList.remove("open");
+        arrows.classList.remove("d-none");
+        closeFootnote.classList.add("d-none");
+    })
+    
 
 //functinons
     const setBookPosition=(bookChapters,index)=>{
