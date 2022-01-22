@@ -7,6 +7,7 @@
     const bookPreview=bookCover.querySelector(".preview-button");
     const contentlibrary=accordionCover.querySelector(".content-library");
     const goToTop=accordionCover.querySelector(".go-back");
+    const accordion=accordionCover.querySelector(".accordion");
     const bookContentWP = accordionCover.querySelectorAll(".accordion-item.with-preview");
     const bookContent = accordionCover.querySelectorAll(".accordion-item:not(.with-sub-chapters)");
     
@@ -17,7 +18,7 @@
     const returnButton=mainBook.querySelector(".return");
     
     const chapterContainer=mainBook.querySelector(".book-content");
-    const bookChapters = mainBook.querySelectorAll(".chapters");
+    const bookChapters = Array.from(chapterContainer.children);
     const bookChaptersWP = mainBook.querySelectorAll(".chapters.with-preview");
     const footnote = mainBook.querySelector(".footnote")
     
@@ -46,23 +47,46 @@
         contentlibrary.classList.remove("pt-5");
         accordionCover.classList.remove("variable-height-class");
     })
+
+
+    // accordion.addEventListener("click",(e)=>{
+    //     console.log(e.target.closest("div"));
+    //     if(e.target.closest("div")){
+    //         if(e.tar)
+    //         mainBook.classList.remove("slide-main-book-out");
+    //         mainBook.classList.add("slide-main-book-in");
+    //     }
+    // })
     
     bookContent.forEach((content,index)=>{
+
         content.addEventListener("click",()=>{
-            var contentText=content.querySelector(".accordion-preview");
-            console.log(contentText);
+            
             if(content.classList.contains("with-preview")){
-                contentText.style.color="var(--blue-accent)"
+                const currentNav= contentlibrary.querySelector(".current-chapter")
+                if(currentNav)
+                    currentNav.classList.remove("current-chapter");
+
+                content.classList.add("current-chapter");
+
                 mainBook.classList.remove("slide-main-book-out");
                 mainBook.classList.add("slide-main-book-in");
-                setTimeout(function(){
-                                location.href="#";
-                                location.href="#"+index;
-                                contentText.style.color="var(--black)"
-                                return;
-                            }, 500);
+
+                const currentChapter =  chapterContainer.querySelector(".current-chapter");
+                const targetChapter = bookChapters[index];
+
+                moveChapters(chapterContainer, currentChapter, targetChapter);
+
+                // currentNav.classList.remove("current-chapter");
+                // setTimeout(function(){
+                //                 location.href="#";
+                //                 location.href="#"+index;
+                //                 contentText.style.color="var(--black)"
+                //                 return;
+                //             }, 500);
                 }
             })
+
     })
     
     returnButton.addEventListener("click",()=>{
