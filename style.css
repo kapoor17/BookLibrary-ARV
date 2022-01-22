@@ -23,6 +23,10 @@
   font-family: book-text-font-bold;
   src: url(./Assets/Libre_Baskerville/LibreBaskerville-Bold.ttf);
 }
+@font-face {
+  font-family: accordion-text-font;
+  src: url(./Assets/Helvetica\ Neue\ LT\ 43\ Light\ Extended.ttf);
+}
 
 html,
 body {
@@ -88,8 +92,17 @@ img {
 
   transition: transform 0.75s ease-in;
 }
+#accordion-cover {
+  font-family: accordion-text-font;
+}
 .book-cover {
   background-color: var(--book-cover-fallback);
+  background: url(./Assets/book-cover.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+
+  color: rgba(255, 255, 255, 0.68);
+
   display: flex;
   flex-direction: column;
   justify-content: space-around;
@@ -135,7 +148,7 @@ img {
   font-size: 2rem;
 
   z-index: 11;
-  padding: 0.55rem 0rem 0.4rem 0rem;
+  padding: 0.5rem;
 }
 .fixed {
   position: fixed;
@@ -226,7 +239,6 @@ img {
   transform: rotate(-45deg);
   overflow: hidden;
 }
-
 #main-book {
   font-family: book-text-font;
   z-index: 13;
@@ -236,6 +248,9 @@ img {
   top: 0;
 
   transition: all 0.5s ease-in;
+}
+.book-content {
+  transition: all 0.75s ease;
 }
 .slide-main-book-out {
   left: 100%;

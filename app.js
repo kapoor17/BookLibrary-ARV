@@ -62,11 +62,11 @@
 
         content.addEventListener("click",()=>{
             
-            if(content.classList.contains("with-preview")){
+            // if(content.classList.contains("with-preview")){
+                
                 const currentNav= contentlibrary.querySelector(".current-chapter")
                 if(currentNav)
                     currentNav.classList.remove("current-chapter");
-
                 content.classList.add("current-chapter");
 
                 mainBook.classList.remove("slide-main-book-out");
@@ -77,40 +77,35 @@
 
                 moveChapters(chapterContainer, currentChapter, targetChapter);
 
-                // currentNav.classList.remove("current-chapter");
-                // setTimeout(function(){
-                //                 location.href="#";
-                //                 location.href="#"+index;
-                //                 contentText.style.color="var(--black)"
-                //                 return;
-                //             }, 500);
-                }
-            })
-
+            // }
+        })
     })
     
     returnButton.addEventListener("click",()=>{
         mainBook.classList.add("slide-main-book-out");
         mainBook.classList.remove("slide-main-book-in");
-
-        setTimeout(function(){
-                    location.href="#";
-                    return;
-                }, 500);
     }) 
 
 
     chapterDown.addEventListener("click",()=>{
         const currentChapter=chapterContainer.querySelector(".current-chapter");
         const nextChapter=currentChapter.nextElementSibling;
+        const currentNav= contentlibrary.querySelector(".current-chapter");
+        const nextNav=currentNav.nextElementSibling;
+
         moveChapters(chapterContainer,currentChapter,nextChapter);
+        updateDots(currentNav,nextNav);
         
     })
 
     chapterUp.addEventListener("click",()=>{
         const currentChapter=chapterContainer.querySelector(".current-chapter");
         const prevChapter=currentChapter.previousElementSibling;
+        const currentNav= contentlibrary.querySelector(".current-chapter");
+        const nextNav=currentNav.previousElementSibling;
         moveChapters(chapterContainer,currentChapter,prevChapter);
+        updateDots(currentNav,nextNav);
+
         
     })
 
@@ -138,4 +133,11 @@
         chapterContainer.style.transform="translateY(-"+targetChapter.style.top+")";
         currentChapter.classList.remove("current-chapter");
         targetChapter.classList.add("current-chapter");
+    }
+
+    const updateDots=(currentNav,targetNav)=>{
+        if(currentNav)
+            currentNav.classList.remove("current-chapter");
+        if(targetNav)
+            targetNav.classList.add("current-chapter")
     }
