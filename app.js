@@ -66,8 +66,19 @@
                 }, 500);
     }) 
 
+
+    chapterDown.addEventListener("click",()=>{
+        const currentChapter=chapterContainer.querySelector(".current-chapter");
+        const nextChapter=currentChapter.nextElementSibling;
+        moveChapters(chapterContainer,currentChapter,nextChapter);
+        
+    })
+
     chapterUp.addEventListener("click",()=>{
-        chapterContainer.style.transform="translateY(-"+targetSlide.style.left+")";
+        const currentChapter=chapterContainer.querySelector(".current-chapter");
+        const prevChapter=currentChapter.previousElementSibling;
+        moveChapters(chapterContainer,currentChapter,prevChapter);
+        
     })
 
 //functinons
@@ -76,3 +87,9 @@
     };
 
     bookChapters.forEach(setBookPosition);
+
+    const moveChapters=(chapterContainer,currentChapter,targetChapter)=>{
+        chapterContainer.style.transform="translateY(-"+targetChapter.style.top+")";
+        currentChapter.classList.remove("current-chapter");
+        targetChapter.classList.add("current-chapter");
+    }
