@@ -3,12 +3,9 @@
     //accordion-wrapper objects
 
     const accordionCover=document.querySelector("#accordion-cover");
-    const bookCover=accordionCover.querySelector(".book-cover");
-    const bookPreview=bookCover.querySelector(".preview-button");
+    const bookPreview=accordionCover.querySelector(".preview-button");
     const contentlibrary=accordionCover.querySelector(".content-library");
     const goToTop=accordionCover.querySelector(".go-back");
-    const accordion=accordionCover.querySelector(".accordion");
-    const bookContentWP = accordionCover.querySelectorAll(".chapter-nav.with-preview");
     const bookContent = accordionCover.querySelectorAll(".chapter-nav");
     
     //main-book objects
@@ -34,7 +31,6 @@
 //values from dom
     
 //events
-
     bookPreview.addEventListener("click",()=>{
         accordionCover.classList.add("variable-height-class");
         setTimeout(() => {
@@ -94,12 +90,14 @@
         if(!nextNav){
             var nextNavContainer=currentNav.closest("div.with-sub-chapters");
             nextNav=nextNavContainer.nextElementSibling;
+            nextNavContainer.querySelector(".accordion-collapse").classList.remove("show")
         }
 
         if(nextNav.classList.contains("with-sub-chapters")){
             var nextNavContainer=nextNav.querySelector(".inner-accordion");
             
             nextNav=nextNavContainer.firstElementChild;
+            nextNavContainer.closest("div.accordion-collapse").classList.add("show")
         }
 
         moveChapters(chapterContainer,currentChapter,nextChapter);
@@ -117,12 +115,15 @@
         if(!nextNav){
             var nextNavContainer=currentNav.closest("div.with-sub-chapters");
             nextNav=nextNavContainer.previousElementSibling;
+            nextNavContainer.querySelector(".accordion-collapse").classList.remove("show")
+
         }
 
         if(nextNav.classList.contains("with-sub-chapters")){
             var nextNavContainer=nextNav.querySelector(".inner-accordion");
             
             nextNav=nextNavContainer.lastElementChild;
+            nextNavContainer.closest("div.accordion-collapse").classList.add("show")
         }
 
         moveChapters(chapterContainer,currentChapter,prevChapter);
@@ -152,6 +153,7 @@
     bookChapters.forEach(setBookPosition);
 
     const moveChapters=(chapterContainer,currentChapter,targetChapter)=>{
+        targetChapter.scrollTo(0,0);
         chapterContainer.style.transform="translateY(-"+targetChapter.style.top+")";
         currentChapter.classList.remove("current-chapter");
         targetChapter.classList.add("current-chapter");

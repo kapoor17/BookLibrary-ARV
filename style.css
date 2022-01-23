@@ -274,6 +274,7 @@ img {
   transition: 0.75s ease;
   flex-direction: column;
   top: calc(100vh - var(--header-heights));
+  background-color: var(--white);
 }
 .footer.open {
   top: 50vh;
@@ -298,17 +299,10 @@ img {
   justify-content: space-around;
   align-items: center;
 }
-.foot-notes {
-  overflow: scroll;
-  padding: 1em;
-}
 .book-content {
   height: 100vh;
 }
 .chapters {
-  padding: var(--header-heights) 1rem;
-  background-color: var(--white);
-
   width: 100vw;
   min-height: 100vh;
   display: flex;
@@ -321,6 +315,19 @@ img {
   bottom: 0;
 
   overflow: scroll;
+}
+.chapters,
+.foot-notes {
+  padding: calc(var(--header-heights) + 0.5rem) 1.25rem;
+  text-align: justify;
+  /* word-spacing: 5px; */
+  background-color: var(--white);
+  line-height: 2rem;
+}
+.foot-notes {
+  height: 50vh;
+  overflow: scroll;
+  padding: 1em;
 }
 .with-sub-chapters {
   padding: 0;
