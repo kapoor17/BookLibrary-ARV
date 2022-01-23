@@ -73,6 +73,7 @@
                 const targetChapter = bookChapters[index];
 
                 moveChapters(chapterContainer, currentChapter, targetChapter);
+                window.setTimeout(()=>{$(".chapter-content").click()},1000);
 
             }
         })
@@ -168,18 +169,21 @@
     }
 
     var focusState=0;
-    $(".book-content").on("click",function(){
+    $(".chapter-content").on("click",function(){
         if(focusState==0)
         {
             focusState=1;
-            $(".book-content").addClass("p-0");
+            $(".chapter-content").addClass("rescale");
             $(".header").addClass('slide-up');
             $(".footer").addClass('slide-down');
             return;
         }
         focusState=0;
-        $(".book-content").removeClass("p-0");
+        $(".chapter-content").removeClass("rescale");
         $(".header").removeClass('slide-up');
         $(".footer").removeClass('slide-down');
 
     })
+    const updateHeaderTitle=(targetTitle)=>{
+        headerTitle.innerHTML=targetTitle.innerHTML;
+    }

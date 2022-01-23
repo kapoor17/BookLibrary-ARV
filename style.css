@@ -51,7 +51,7 @@ body {
   position: relative;
 }
 #main-container{
-  width:680;
+  width:100%;
   overflow: hidden;
   position: relative;
 }
@@ -144,8 +144,8 @@ img {
 .content-library {
   width: 100%;
   height:100%;
-  padding-top:10px ;
   position: relative;
+  padding-bottom: 15px;
   overflow: auto;
   background: url(./Assets/book-cover.jpg);
   background-size: cover;
@@ -153,18 +153,11 @@ img {
 }
 .content-library .go-back {
   width: 100%;
-  height:20px;
+  height:15px;
   display: flex;
   justify-content: center;
   align-items: center;
   z-index: 11;
-}
-.go-back i {
-  transform: rotate(0deg);
-  transition: all 0.5s ease;
-}
-.fixed i {
-  transform: rotate(-180deg);
 }
 .accordion {
   border-radius: 22.5px 22.5px 0 0;
@@ -252,11 +245,7 @@ img {
   width:100%;
   position: absolute;
   top: 0;
-
   transition: all 0.5s ease-in;
-}
-.book-content {
-  transition: all 0.75s ease;
 }
 .slide-main-book-out {
   left: 100%;
@@ -268,18 +257,17 @@ img {
 .footer {
   width: 100%;
   position: absolute;
+  padding:15px;
   display: flex;
   justify-content: center;
   transition: 0.75s ease;
   z-index:222;
+  background-color: rgb(36, 35, 35);
   align-items: center;
 }
 .header,
 .go-back {
-  padding: 10px;
   height: var(--header-heights);
-  background-color: var(--book-cover-fallback);
-  border-radius: 0 0 var(--border-radius) var(--border-radius);
   top: 0px;
 }
 .header .chapter-title,
@@ -304,10 +292,6 @@ img {
   top: 100vh;
 }
 .footer .controls {
-  height: var(--header-heights);
-
-  background-color: var(--book-cover-fallback);
-
   border-radius: var(--border-radius) var(--border-radius) 0 0;
   width: 100%;
   display: flex;
@@ -316,6 +300,8 @@ img {
 }
 .controls .arrows {
   width: 100%;
+  font-size:0.9rem;
+  color:whitesmoke;
   display: flex;
   justify-content: space-around;
   align-items: center;
@@ -327,23 +313,30 @@ img {
 .book-content {
   height: 100vh;
   background-color: red;
-  transition: 0.75s ease;
 }
 .chapters {
-  padding: var(--header-heights) 1rem;
-  background-color: var(--white);
   width: 100%;
-  min-height: 100vh;
+  height: 100vh;
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
+  justify-content: center;
   align-items: center;
-
   position: absolute;
   top: 0;
   bottom: 0;
+  overflow: hidden;
+  background-color: #383b3d;
+}
+.chapter-content{
+  background-color: rgb(228, 226, 226);
+  height:100%;
+  box-shadow: 0px 0px 20px black;
+  overflow-y: auto;
+  transform: scale(0.85);
+  padding:15px 10px;
+  text-align: justify;
 
-  overflow: scroll;
+  transition: all 0.75s ease;
 }
 .with-sub-chapters {
   padding: 0;
@@ -355,6 +348,10 @@ img {
 }
 .slide-down{
   transform: translateY(100%)!important;
+}
+.rescale{
+  transform: scale(1);
+  box-shadow: none;
 }
 @media only screen and (min-width:720px){
   #main-container{
