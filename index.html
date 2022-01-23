@@ -7,106 +7,115 @@
     <title>Book Library</title>
     <!-- <link rel="stylesheet" href="./FullPage JS/fullpage.min.css"> -->
     <link rel="stylesheet" href="./Assets/bootstrap/css/bootstrap.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"/>
     <link rel="stylesheet" href="./style.css">
 </head>
 <body>
-    <div id="main-container">
-        <div class="wrapper" id="accordion-cover">
-            <div class="containers">
-                <div class="book-cover">
-                    <h1 class="book-title">Book Title</h1>
-                    <!-- <h3 class="preview-button"  data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">Preview</h3> -->
-                    <h3 class="preview-button">Preview</h3>
-                </div>
-                <div class="content-library">
-                    <div class="go-back" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+
+    <div class="wrapper" id="accordion-cover">
+        <div class="containers">
+            <div class="book-cover">
+                <h1 class="book-title">Book Title</h1>
+                <h3 class="preview-button">Preview</h3>
+            </div>
+            <div class="content-library">
+                <div class="go-back"><i class="fas fa-arrow-circle-up"></i></div>
+                <div class="accordion accordion-flush" id="accordionFlushExample"t>
+
+                    <div class="chapter-nav accordion-item with-preview">
+                        <h3 class="accordion-header" id="flush-headingOne">
+                            <p class="accordion-preview collapsed">
+                                Intro
+                            </p>
+                        </h3>
+                        <div class="corner-ribbon">preview</div>
                     </div>
-                    <div class="accordion accordion-flush" id="accordionFlushExample" style="height: inherit;">
-                        <div class="accordion-item with-preview">
-                            <h3 class="accordion-header" id="flush-headingOne">
-                                <p class="accordion-preview collapsed">
-                                    Intro
-                                </p>
-                            </h3>
-                            <div class="corner-ribbon">preview</div>
-                        </div>
-                        <div class="accordion-item">
-                            <h3 class="accordion-header" id="flush-headingOne">
-                                <p class="accordion-preview collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">
-                                    The Story of Something
-                                </p>
-                            </h3>
-                            <div id="flush-collapseTwo" class="accordion-collapse collapse" aria-labelledby="flush-headingTwo" data-bs-parent="#accordionFlushExample">
-                                <div class="accordion-body">
-                                    <p class="chapter-mini-intro">In this chapter you will discover what happens when the idea finally evolves into something...</p>
-                                    <h4 class="payment-prompt">Unlock this entire book and discover</h4>
-                                    <div class="payment-gateway"></div>
-                                    <button class="login-button">Member Login</button>
-                                </div>
+
+                    <div class="chapter-nav accordion-item">
+                        <h3 class="accordion-header" id="flush-headingTwo">
+                            <p class="accordion-preview collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">
+                                The Story of Something
+                            </p>
+                        </h3>
+
+                        <div id="flush-collapseTwo" class="accordion-collapse collapse" aria-labelledby="flush-headingTwo" data-bs-parent="#accordionFlushExample">
+                            <div class="accordion-body">
+                                <p class="chapter-mini-intro">In this chapter you will discover what happens when the idea finally evolves into something...</p>
+                                <h4 class="payment-prompt">Unlock this entire book and discover</h4>
+                                <div class="payment-gateway"></div>
+                                <button class="login-button">Member Login</button>
                             </div>
                         </div>
-                        <div class="accordion-item with-sub-chapters">
-                            <h3 class="accordion-header" id="flush-headingThree">
-                                <p class="accordion-button accordion-preview collapsed m-0" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseThree" aria-expanded="false" aria-controls="flush-collapseThree">
-                                    The Main Event
-                                </p>
-                            </h3>
-                            <div class="corner-ribbon">preview</div>
-                            <div id="flush-collapseThree" class="accordion-collapse collapse" aria-labelledby="flush-headingThree" data-bs-parent="#accordionFlushExample">
-                                <div class="accordion-body">
-                                    <div class="accordion accordion-flush" id="accordionFlushExample">
-                                        <div class="accordion-item with-preview">
-                                            <h3 class="accordion-header" id="flush-headingOne">
-                                                <p class="accordion-preview collapsed">
-                                                    Intro
-                                                </p>
-                                            </h3>
-                                            <div class="corner-ribbon">preview</div>
-                                        </div>
-                                        <div class="accordion-item">
-                                            <h3 class="accordion-header" id="flush-headingOne">
-                                                <p class="accordion-preview collapsed">
-                                                    The Story of Something
-                                                </p>
-                                            </h3>
-                                        </div>
+                    </div>
+
+                    <div class="accordion-item with-sub-chapters">
+                        <h3 class="accordion-header" id="flush-headingThree">
+                            <p class="accordion-button accordion-preview collapsed m-0" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseThree" aria-expanded="false" aria-controls="flush-collapseThree">
+                                The Main Event
+                            </p>
+                        </h3>
+
+                        <div class="corner-ribbon">preview</div>
+
+                        <div id="flush-collapseThree" class="accordion-collapse collapse" aria-labelledby="flush-headingThree" data-bs-parent="#accordionFlushExample">
+                            <div class="accordion-body">
+
+                                <div class="accordion inner-accordion accordion-flush" id="accordionFlushExample">
+                                    <div class="chapter-nav accordion-item with-preview">
+                                        <h3 class="accordion-header" id="flush-headingThreeOne">
+                                            <p class="accordion-preview collapsed">
+                                                A Sub Chapter Intro
+                                            </p>
+                                        </h3>
+                                        <div class="corner-ribbon">preview</div>
+                                    </div>
+
+                                    <div class="chapter-nav accordion-item">
+                                        <h3 class="accordion-header" id="flush-headingThreeOne">
+                                            <p class="accordion-preview collapsed">
+                                                A Sub Chapter Story
+                                            </p>
+                                        </h3>
                                     </div>
                                 </div>
-                          </div>
-                        </div>
-                        <div class="accordion-item">
-                            <h3 class="accordion-header" id="flush-headingOne">
-                                <p class="accordion-preview collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseFour" aria-expanded="false" aria-controls="flush-collapseFour">
-                                    Road Trip
-                                </p>
-                            </h3>
-                            <div id="flush-collapseFour" class="accordion-collapse collapse" aria-labelledby="flush-headingFour" data-bs-parent="#accordionFlushExample">
-                                <div class="accordion-body">
-                                    <p class="chapter-mini-intro">In this chapter you will discover what happens when the idea finally evolves into something...</p>
-                                    <h4 class="payment-prompt">Unlock this entire book and discover</h4>
-                                    <div class="payment-gateway"></div>
-                                    <button class="login-button">Member Login</button>
-                                </div>
+
+                            </div>
+                      </div>
+                    </div>
+
+                    <div class="chapter-nav accordion-item">
+                        <h3 class="accordion-header" id="flush-headingFour">
+                            <p class="accordion-preview collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseFour" aria-expanded="false" aria-controls="flush-collapseFour">
+                                Road Trip
+                            </p>
+                        </h3>
+                        <div id="flush-collapseFour" class="accordion-collapse collapse" aria-labelledby="flush-headingFour" data-bs-parent="#accordionFlushExample">
+                            <div class="accordion-body">
+                                <p class="chapter-mini-intro">In this chapter you will discover what happens when the idea finally evolves into something...</p>
+                                <h4 class="payment-prompt">Unlock this entire book and discover</h4>
+                                <div class="payment-gateway"></div>
+                                <button class="login-button">Member Login</button>
                             </div>
                         </div>
-                        <div class="accordion-item">
-                            <h3 class="accordion-header" id="flush-headingOne">
-                                <p class="accordion-preview collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseFive" aria-expanded="false" aria-controls="flush-collapseFive">
-                                    The New Farm Story
-                                </p>
-                            </h3>
-                            <div id="flush-collapseFive" class="accordion-collapse collapse" aria-labelledby="flush-headingFive" data-bs-parent="#accordionFlushExample">
-                                <div class="accordion-body">
-                                    <p class="chapter-mini-intro">In this chapter you will discover what happens when the idea finally evolves into something...</p>
-                                    <h4 class="payment-prompt">Unlock this entire book and discover</h4>
-                                    <div class="payment-gateway"></div>
-                                    <button class="login-button">Member Login</button>
-                                </div>
+                    </div>
+
+                    <div class="chapter-nav accordion-item">
+                        <h3 class="accordion-header" id="flush-headingFive">
+                            <p class="accordion-preview collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseFive" aria-expanded="false" aria-controls="flush-collapseFive">
+                                The New Farm Story
+                            </p>
+                        </h3>
+                        <div id="flush-collapseFive" class="accordion-collapse collapse" aria-labelledby="flush-headingFive" data-bs-parent="#accordionFlushExample">
+                            <div class="accordion-body">
+                                <p class="chapter-mini-intro">In this chapter you will discover what happens when the idea finally evolves into something...</p>
+                                <h4 class="payment-prompt">Unlock this entire book and discover</h4>
+                                <div class="payment-gateway"></div>
+                                <button class="login-button">Member Login</button>
                             </div>
                         </div>
                         
                     </div>
+<<<<<<< HEAD
                 </div>
             </div>
         </div>
@@ -138,6 +147,167 @@
                         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Rem magni maiores at repudiandae quasi, quam doloremque neque quod cumque id.</p>
                     </div>
                 </div>
+=======
+
+                    <div class="chapter-nav accordion-item with-preview">
+                        <h3 class="accordion-header" id="flush-headingSix">
+                            <p class="accordion-preview collapsed">
+                                Intro-2
+                            </p>
+                        </h3>
+                        <div class="corner-ribbon">preview</div>
+                    </div>
+
+                    <div class="chapter-nav accordion-item">
+                        <h3 class="accordion-header" id="flush-headingSeven">
+                            <p class="accordion-preview collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseSeven" aria-expanded="false" aria-controls="flush-collapseSeven">
+                                The Story of Something-2
+                            </p>
+                        </h3>
+
+                        <div id="flush-collapseSeven" class="accordion-collapse collapse" aria-labelledby="flush-headingSeven" data-bs-parent="#accordionFlushExample">
+                            <div class="accordion-body">
+                                <p class="chapter-mini-intro">In this chapter you will discover what happens when the idea finally evolves into something...</p>
+                                <h4 class="payment-prompt">Unlock this entire book and discover</h4>
+                                <div class="payment-gateway"></div>
+                                <button class="login-button">Member Login</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item with-sub-chapters">
+                        <h3 class="accordion-header" id="flush-headingEight">
+                            <p class="accordion-button accordion-preview collapsed m-0" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseEight" aria-expanded="false" aria-controls="flush-collapseEight">
+                                The Main Event-2
+                            </p>
+                        </h3>
+
+                        <div class="corner-ribbon">preview</div>
+
+                        <div id="flush-collapseEight" class="accordion-collapse collapse" aria-labelledby="flush-headingEight" data-bs-parent="#accordionFlushExample">
+                            <div class="accordion-body">
+
+                                <div class="accordion inner-accordion accordion-flush" id="accordionFlushExample">
+                                    <div class="chapter-nav accordion-item with-preview">
+                                        <h3 class="accordion-header" id="flush-headingEightOne">
+                                            <p class="accordion-preview collapsed">
+                                                A Sub Chapter Intro-2
+                                            </p>
+                                        </h3>
+                                        <div class="corner-ribbon">preview</div>
+                                    </div>
+
+                                    <div class="chapter-nav accordion-item">
+                                        <h3 class="accordion-header" id="flush-headingEightOne">
+                                            <p class="accordion-preview collapsed">
+                                                A Sub Chapter Story-2
+                                            </p>
+                                        </h3>
+                                    </div>
+                                </div>
+
+                            </div>
+                      </div>
+                    </div>
+
+                    <div class="chapter-nav accordion-item">
+                        <h3 class="accordion-header" id="flush-headingNine">
+                            <p class="accordion-preview collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseNine" aria-expanded="false" aria-controls="flush-collapseNine">
+                                Road Trip-2
+                            </p>
+                        </h3>
+                        <div id="flush-collapseNine" class="accordion-collapse collapse" aria-labelledby="flush-headingNine" data-bs-parent="#accordionFlushExample">
+                            <div class="accordion-body">
+                                <p class="chapter-mini-intro">In this chapter you will discover what happens when the idea finally evolves into something...</p>
+                                <h4 class="payment-prompt">Unlock this entire book and discover</h4>
+                                <div class="payment-gateway"></div>
+                                <button class="login-button">Member Login</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="chapter-nav accordion-item">
+                        <h3 class="accordion-header" id="flush-headingTen">
+                            <p class="accordion-preview collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseTen" aria-expanded="false" aria-controls="flush-collapseTen">
+                                The New Farm Story-2
+                            </p>
+                        </h3>
+                        <div id="flush-collapseTen" class="accordion-collapse collapse" aria-labelledby="flush-headingTen" data-bs-parent="#accordionFlushExample">
+                            <div class="accordion-body">
+                                <p class="chapter-mini-intro">In this chapter you will discover what happens when the idea finally evolves into something...</p>
+                                <h4 class="payment-prompt">Unlock this entire book and discover</h4>
+                                <div class="payment-gateway"></div>
+                                <button class="login-button">Member Login</button>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="wrapper slide-main-book-out" id="main-book">
+        <div class="containers">
+            <div class="header">
+                <i class="fas fa-arrow-circle-left return"></i>
+                <div class="chapter-title">Title</div>
+            </div>
+            <div class="book-content">
+                <div class="chapters with-preview current-chapter">
+                    Lorem ipsum dolor sit, amet consectetur adipisicing elit. Expedita quas delectus autem molestiae cumque doloribus provident, ex pariatur officia aspernatur iste porro! Facilis iusto illum ratione unde ut cupiditate quos error, ipsa minus sapiente esse eos! Quae animi incidunt ratione tempora consectetur, rem aliquid. Maiores, error nam. Eligendi deleniti quae nihil hic pariatur cupiditate odit accusamus at error non eveniet ratione iusto vitae ea perferendis, ad molestiae mollitia? A eum quam possimus illo pariatur voluptas nulla assumenda architecto asperiores, voluptate error dicta officia dolore harum quae excepturi cum mollitia ratione sequi quia repudiandae vel aspernatur iure consequatur. Dolor id nobis ex? Blanditiis ad aut repudiandae itaque illo, perferendis tenetur, sit omnis adipisci impedit voluptate debitis veniam inventore non, quo amet provident eos. Veritatis aliquam necessitatibus architecto illum error eum porro culpa tenetur nesciunt corrupti saepe pariatur doloremque, rerum officiis nemo consequatur provident, natus soluta delectus ab quod labore aperiam. Aliquam maxime error fugit hic velit veritatis beatae nesciunt quis enim sapiente et iste nam, facilis labore unde qui quidem possimus sunt minus ut earum culpa ipsum dolores magni. Maiores blanditiis explicabo voluptatem veritatis corrupti. Pariatur possimus consequatur cum, aliquam necessitatibus omnis praesentium porro facere rerum vitae ea, natus reiciendis hic officiis eius. Nesciunt debitis dolore minima, provident molestias possimus, nobis ab, eum pariatur obcaecati tempore autem sapiente tempora accusamus aspernatur? Minus repudiandae quasi porro recusandae aspernatur nam iure sed qui obcaecati! Nisi non sit laudantium illum architecto veniam dicta rem! Consequatur minima, laborum magnam dolore numquam, dolores voluptates dignissimos sequi dolorum rem, ad corrupti necessitatibus laudantium eos quod expedita! Ullam adipisci aspernatur et, quaerat eius deserunt, architecto quasi illum, molestiae rerum porro. Iste, sunt repellat ea fugiat cumque sit consequatur ipsam maiores voluptatibus ducimus velit sapiente doloribus asperiores ut totam? Eos praesentium veritatis mollitia alias autem itaque placeat recusandae cumque labore eveniet rerum ea id neque saepe numquam, optio ut libero amet. In dolorem nostrum vitae a earum doloremque quos rerum, soluta quo delectus laudantium quam placeat, hic mollitia est culpa cum molestias nisi ad natus aspernatur tempore aperiam tempora officiis. Quae fuga perferendis, provident iusto illo voluptatem totam cum asperiores deleniti repellendus optio eaque voluptas ut nemo quasi voluptate sint repellat sunt fugit nobis unde? Optio, quos inventore. Nulla perspiciatis aperiam, cumque molestias omnis aliquid distinctio officiis dolorum porro, blanditiis id recusandae eligendi ipsum? Veritatis nostrum magnam laboriosam quae accusantium est temporibus porro laborum sequi consequuntur ratione quas quidem, voluptatem autem facilis! Aut voluptate veniam qui blanditiis, repudiandae impedit explicabo provident nisi nostrum at cupiditate debitis sunt doloremque iste quas ratione quam eligendi possimus minima quidem labore cum atque? Repudiandae libero id obcaecati sit eligendi soluta nostrum! Quia tenetur distinctio, quo aperiam maxime eaque inventore exercitationem enim corrupti laboriosam ab officia eos tempora deserunt. Suscipit vero exercitationem tenetur cupiditate tempora. Mollitia obcaecati totam assumenda illum ratione excepturi architecto nesciunt dolorem error ad? Nam magni saepe voluptatem inventore iusto sed, similique maiores dolore iure molestias ipsa, aliquam repellendus exercitationem laboriosam velit consequatur perferendis voluptatum adipisci incidunt cum? Incidunt, voluptates doloribus.
+                    <a class="footnote">footnote text</a>
+                </div>
+                <div class="chapters">
+                    Lorem ipsum dolor sit amet consectetur, adipisicing elit. Tempore beatae possimus eius blanditiis expedita nemo eveniet unde dolorem in alias ex quae maiores magnam quibusdam dolore vitae error, iste nam architecto quidem laborum sed eaque officiis! Recusandae, laborum architecto illum eum sequi quae excepturi natus reiciendis quia repudiandae aperiam quisquam, tempore voluptate nesciunt illo eveniet. Soluta officia adipisci, nobis porro minima modi repudiandae eum reiciendis tempora ipsam accusantium nemo excepturi? Vel libero inventore, ratione perferendis adipisci consectetur quasi quam veniam magni neque! Repudiandae optio iste corrupti quaerat aspernatur obcaecati porro alias dolores ipsam quos, nam rem modi tenetur aperiam asperiores. Nostrum doloribus quae laborum! Consectetur nemo voluptas odit at corrupti eos voluptates libero, ad, error ut sint, officiis iste atque modi magni deleniti ullam repellendus! Nesciunt maiores quasi eos ab, assumenda asperiores libero facere facilis voluptatum voluptas cupiditate veniam. Libero consequuntur perferendis maiores repudiandae! Voluptatum repellat fuga cupiditate? Laudantium at porro quibusdam, veritatis voluptatem minus voluptatum id iste officiis! Nisi voluptas praesentium tempora numquam vero aliquam minima dolorum optio dolores voluptatibus eveniet, ratione quia repellat cumque perferendis, exercitationem quod. Excepturi at nam quia molestias sequi, voluptatum dignissimos ab porro exercitationem! Aperiam cum non suscipit consectetur fuga minus vero earum temporibus dolorem illum atque tenetur, inventore autem officiis dicta hic ducimus, error aspernatur? Vitae laboriosam eveniet, quae libero ut quaerat maiores tenetur recusandae possimus amet exercitationem tempore doloribus enim debitis molestias quas excepturi quo voluptatibus, voluptas aliquid id similique quidem quisquam. Voluptatem, at in sint maxime qui ab repellat necessitatibus, perspiciatis quo tempore voluptates, porro illo nobis nostrum autem saepe voluptatum quia iusto reiciendis dignissimos nam soluta. Ullam suscipit neque excepturi id provident expedita odio sint officia, eius deserunt ipsam eum dolore repellat molestiae enim minima facere itaque omnis in impedit asperiores voluptatem molestias praesentium soluta? Vel accusamus qui dignissimos quos sint deleniti dolorem odit fuga eveniet voluptatibus, beatae recusandae accusantium laborum. Dolorum praesentium incidunt ea neque illum corporis quo dolorem dolores non veniam recusandae, deserunt placeat culpa libero dolor quia et architecto quasi. Reprehenderit debitis itaque quis voluptates illum odio consequuntur iure vero soluta exercitationem expedita porro ea voluptatum ratione est assumenda maiores quasi veritatis nobis deleniti saepe, impedit aspernatur ullam! Distinctio amet cum inventore harum. Aperiam error repellat placeat aspernatur distinctio unde ratione, quo iste eligendi corporis ex nisi? Temporibus velit voluptate consequatur numquam tenetur deserunt officia vel deleniti debitis vitae necessitatibus odio, facere natus eos animi ipsa ea sed quae, cumque excepturi! At, cupiditate vitae explicabo totam distinctio debitis ea hic! Tenetur fuga impedit deleniti repellat, sequi atque distinctio dolor nesciunt quas necessitatibus saepe delectus maiores veniam sapiente tempora. Voluptates quae eligendi, velit placeat fugiat esse perferendis omnis? Quaerat, dolore voluptas. Distinctio, id labore neque blanditiis nam, ipsa numquam tempora vero laborum sunt excepturi eius fuga, tenetur natus? Reiciendis similique recusandae rerum? Obcaecati explicabo et quae rem minus cupiditate quos pariatur nobis repellendus fugiat mollitia non accusantium, incidunt cumque cum officiis odio unde, beatae veniam, vel nihil reprehenderit? Dignissimos molestiae incidunt, commodi neque consequatur consectetur modi porro tempore.
+                </div>
+                <div class="chapters sub-chapter with-preview">
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus animi inventore quos dolores modi autem eligendi quod voluptatibus consequatur et ducimus magnam, temporibus repellat nobis accusamus, voluptates consectetur magni vero sint. Quibusdam iusto dolorem laudantium placeat quam nulla, nobis, rem ipsa aspernatur modi repellat. At, maiores assumenda, provident modi, eius quidem vel ea dolores dolorem doloremque tenetur. Voluptatum quidem magnam vel magni dicta hic, tempora repellat laboriosam totam impedit, officiis doloribus recusandae labore ducimus deserunt iure, commodi ipsa vero? Dicta delectus autem sed aut dolor harum aspernatur quidem. Velit fugit repellat tenetur maxime. Similique nam assumenda impedit corrupti in molestiae, ducimus qui sapiente sunt, eligendi quas odio asperiores dicta veritatis sit earum sint cupiditate inventore officia, ratione optio vero. Ipsum assumenda unde consectetur officia itaque nostrum tempore, quaerat qui quisquam, voluptatibus tempora nam ullam, labore aliquid sed minima cum incidunt consequatur praesentium recusandae. Fuga accusamus, ratione adipisci in sequi facere doloremque asperiores dolorum earum illo delectus dolorem consequatur, sint libero sunt ut pariatur dolores accusantium ducimus veniam cupiditate quod aspernatur officia saepe. Ullam vero quaerat, sed iure impedit maiores illo hic pariatur perspiciatis eos odio quos accusantium magnam voluptas harum numquam soluta repellendus eius quasi rerum. Quos facere ipsam odit voluptates ex reiciendis laudantium soluta, maiores repudiandae tempore sed facilis, hic earum deleniti? Aspernatur eius molestiae voluptates voluptatem nesciunt vero officia accusamus tempora sed fuga voluptas quis placeat quaerat natus dolor, laborum ex illum suscipit ad perferendis modi facilis porro. Alias asperiores, quos voluptas blanditiis iusto non incidunt molestias vel dicta cumque dolores cum. At consectetur quidem fuga, reiciendis tempora minus ea illum unde accusamus? Nisi itaque cum ipsum consequuntur tempore magnam consequatur reiciendis iusto pariatur culpa corporis impedit quia quisquam nesciunt fuga iste dicta rerum, quidem molestiae obcaecati sequi expedita tenetur nam. Quam cumque praesentium aut enim cum, voluptate tempore quae distinctio, iusto deserunt id doloremque nobis voluptates corrupti voluptatum dicta harum esse blanditiis odit eligendi reiciendis explicabo quis aperiam! Nobis quidem provident voluptatem nam amet temporibus sequi fuga quos inventore minus, libero exercitationem, quisquam rem et, asperiores natus itaque ipsam vero. Ipsum quae et beatae delectus repellendus quas qui dolore sed suscipit quisquam quos, numquam officiis consectetur modi doloribus, adipisci explicabo accusamus corrupti minus deleniti culpa harum? Quia illum, non ab labore similique libero dolore, quis ullam fugit veniam nulla? Atque ea itaque totam facere neque quia, porro illo quos ipsum quisquam tempore recusandae corporis, dolorum fuga repellat commodi asperiores quidem optio suscipit ipsam debitis repellendus modi impedit explicabo! Deserunt facere pariatur optio at ipsam libero delectus sequi! Accusantium expedita quo earum. Ratione aut quibusdam delectus vel a libero hic cumque? Possimus libero quaerat magnam nulla numquam illum, iste assumenda ratione sit doloremque cum, aspernatur nam quia sint quae nostrum suscipit natus nesciunt? Ea magnam inventore eveniet molestias placeat aliquam accusamus culpa. Quos quisquam at laboriosam in perspiciatis sequi dolorum, numquam, nam fugit unde, non nostrum aliquam tempore? Cupiditate tempore sed perferendis qui! Asperiores autem vero doloribus doloremque facilis ad, velit nulla, corrupti nam ratione voluptates sapiente laudantium.
+                </div>
+                <div class="chapters sub-chapter">
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Adipisci unde veniam impedit maxime eum doloribus distinctio aut soluta quam deserunt? Quae aspernatur deserunt explicabo repudiandae error. Odit expedita unde maxime? Exercitationem tempora quae quam molestias obcaecati voluptas, iure ut aperiam voluptatibus hic vero. Eum quaerat magni, velit molestias praesentium ducimus, iure, corporis obcaecati laudantium assumenda quibusdam tempore quam unde. Aspernatur non numquam ad aperiam voluptates provident mollitia eligendi vitae officia nisi, rem nam deleniti fuga, beatae ratione inventore? Facilis atque quas rerum, accusamus a iste minus quae, magnam, cumque autem suscipit obcaecati unde cupiditate expedita recusandae in! Quae placeat provident incidunt neque iste iusto veritatis quis at impedit minima nostrum voluptate dicta maxime, rerum numquam ad eligendi laudantium ipsam. Omnis saepe laudantium veniam magnam labore necessitatibus ratione tempore placeat exercitationem quasi officia aliquid reprehenderit praesentium culpa, quo commodi consequatur amet sunt soluta est atque officiis error debitis? Dolorum exercitationem dignissimos explicabo delectus, fugit consequatur quisquam commodi impedit repellat corrupti dolore reprehenderit! Nesciunt corporis dolor maiores! Laboriosam modi quo temporibus eaque optio. Aspernatur nesciunt maiores dolor repellat! Beatae repellat facere nobis dolore aliquam nulla exercitationem veniam reprehenderit fugiat quidem! At, maiores beatae nesciunt enim magnam, architecto natus vitae impedit autem totam unde, necessitatibus inventore! Eaque, rerum! Maiores animi ab sapiente culpa, corrupti repellat est impedit enim qui eaque quaerat quos officia odit dolorum quasi quisquam cumque minus nisi blanditiis provident voluptatum error esse. Maxime, beatae voluptates? Voluptates tempore perferendis totam consectetur quam aliquam in deserunt blanditiis illum libero dignissimos facilis, odio fugit saepe optio mollitia expedita maiores ipsam laboriosam similique dolorem accusantium architecto itaque. Ex, eum ullam commodi laboriosam ipsa odio optio eius? Dignissimos asperiores impedit fuga quis. Aperiam necessitatibus accusamus dolor ipsa nulla non! Voluptate illo cupiditate porro sequi molestias impedit similique! Iure eaque, facilis animi assumenda et dicta magni deserunt consequuntur ipsa quod quibusdam. Doloremque rerum voluptatum magnam doloribus a pariatur, voluptatem dolores eum nobis temporibus vero optio laborum voluptatibus laboriosam quibusdam laudantium quas, nulla velit ratione eligendi odio quia perspiciatis. Dicta quaerat praesentium deleniti incidunt ipsum dolorem quia sint! Provident corporis mollitia at cumque amet reprehenderit consequuntur nihil sint soluta enim, voluptas molestiae ab hic inventore veritatis laudantium. Officia commodi neque reiciendis aspernatur recusandae sunt ullam debitis culpa! Deserunt aspernatur, perferendis voluptatibus porro est autem, consequuntur, at similique in quia delectus unde. Sed, vel natus voluptatum earum facere quod ipsam non! At earum nulla quidem? Sequi, ipsam amet sapiente debitis ex nesciunt perspiciatis perferendis cupiditate architecto illo nemo tenetur! Maxime vero nihil laborum consequuntur nisi. Facere totam recusandae qui alias doloribus, hic magnam. Voluptatem, iure quasi tempora porro, dolores molestiae reiciendis harum sequi sit eligendi soluta alias et repellat, officiis repellendus! Expedita, doloribus delectus temporibus eveniet deserunt nobis laboriosam veritatis, rerum quaerat ipsum facere corporis enim voluptatibus obcaecati laudantium illo voluptates saepe consequatur, dolorem nesciunt eaque quam ipsa. Ratione qui harum autem dignissimos repudiandae expedita a tempore, reiciendis iusto? Fuga sit nisi nobis quasi maxime ratione, dolores sunt earum debitis reiciendis atque eveniet animi totam quis non similique!
+                </div>
+                <div class="chapters">
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Adipisci unde veniam impedit maxime eum doloribus distinctio aut soluta quam deserunt? Quae aspernatur deserunt explicabo repudiandae error. Odit expedita unde maxime? Exercitationem tempora quae quam molestias obcaecati voluptas, iure ut aperiam voluptatibus hic vero. Eum quaerat magni, velit molestias praesentium ducimus, iure, corporis obcaecati laudantium assumenda quibusdam tempore quam unde. Aspernatur non numquam ad aperiam voluptates provident mollitia eligendi vitae officia nisi, rem nam deleniti fuga, beatae ratione inventore? Facilis atque quas rerum, accusamus a iste minus quae, magnam, cumque autem suscipit obcaecati unde cupiditate expedita recusandae in! Quae placeat provident incidunt neque iste iusto veritatis quis at impedit minima nostrum voluptate dicta maxime, rerum numquam ad eligendi laudantium ipsam. Omnis saepe laudantium veniam magnam labore necessitatibus ratione tempore placeat exercitationem quasi officia aliquid reprehenderit praesentium culpa, quo commodi consequatur amet sunt soluta est atque officiis error debitis? Dolorum exercitationem dignissimos explicabo delectus, fugit consequatur quisquam commodi impedit repellat corrupti dolore reprehenderit! Nesciunt corporis dolor maiores! Laboriosam modi quo temporibus eaque optio. Aspernatur nesciunt maiores dolor repellat! Beatae repellat facere nobis dolore aliquam nulla exercitationem veniam reprehenderit fugiat quidem! At, maiores beatae nesciunt enim magnam, architecto natus vitae impedit autem totam unde, necessitatibus inventore! Eaque, rerum! Maiores animi ab sapiente culpa, corrupti repellat est impedit enim qui eaque quaerat quos officia odit dolorum quasi quisquam cumque minus nisi blanditiis provident voluptatum error esse. Maxime, beatae voluptates? Voluptates tempore perferendis totam consectetur quam aliquam in deserunt blanditiis illum libero dignissimos facilis, odio fugit saepe optio mollitia expedita maiores ipsam laboriosam similique dolorem accusantium architecto itaque. Ex, eum ullam commodi laboriosam ipsa odio optio eius? Dignissimos asperiores impedit fuga quis. Aperiam necessitatibus accusamus dolor ipsa nulla non! Voluptate illo cupiditate porro sequi molestias impedit similique! Iure eaque, facilis animi assumenda et dicta magni deserunt consequuntur ipsa quod quibusdam. Doloremque rerum voluptatum magnam doloribus a pariatur, voluptatem dolores eum nobis temporibus vero optio laborum voluptatibus laboriosam quibusdam laudantium quas, nulla velit ratione eligendi odio quia perspiciatis. Dicta quaerat praesentium deleniti incidunt ipsum dolorem quia sint! Provident corporis mollitia at cumque amet reprehenderit consequuntur nihil sint soluta enim, voluptas molestiae ab hic inventore veritatis laudantium. Officia commodi neque reiciendis aspernatur recusandae sunt ullam debitis culpa! Deserunt aspernatur, perferendis voluptatibus porro est autem, consequuntur, at similique in quia delectus unde. Sed, vel natus voluptatum earum facere quod ipsam non! At earum nulla quidem? Sequi, ipsam amet sapiente debitis ex nesciunt perspiciatis perferendis cupiditate architecto illo nemo tenetur! Maxime vero nihil laborum consequuntur nisi. Facere totam recusandae qui alias doloribus, hic magnam. Voluptatem, iure quasi tempora porro, dolores molestiae reiciendis harum sequi sit eligendi soluta alias et repellat, officiis repellendus! Expedita, doloribus delectus temporibus eveniet deserunt nobis laboriosam veritatis, rerum quaerat ipsum facere corporis enim voluptatibus obcaecati laudantium illo voluptates saepe consequatur, dolorem nesciunt eaque quam ipsa. Ratione qui harum autem dignissimos repudiandae expedita a tempore, reiciendis iusto? Fuga sit nisi nobis quasi maxime ratione, dolores sunt earum debitis reiciendis atque eveniet animi totam quis non similique!
+                </div>
+                <div class="chapters">
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Adipisci unde veniam impedit maxime eum doloribus distinctio aut soluta quam deserunt? Quae aspernatur deserunt explicabo repudiandae error. Odit expedita unde maxime? Exercitationem tempora quae quam molestias obcaecati voluptas, iure ut aperiam voluptatibus hic vero. Eum quaerat magni, velit molestias praesentium ducimus, iure, corporis obcaecati laudantium assumenda quibusdam tempore quam unde. Aspernatur non numquam ad aperiam voluptates provident mollitia eligendi vitae officia nisi, rem nam deleniti fuga, beatae ratione inventore? Facilis atque quas rerum, accusamus a iste minus quae, magnam, cumque autem suscipit obcaecati unde cupiditate expedita recusandae in! Quae placeat provident incidunt neque iste iusto veritatis quis at impedit minima nostrum voluptate dicta maxime, rerum numquam ad eligendi laudantium ipsam. Omnis saepe laudantium veniam magnam labore necessitatibus ratione tempore placeat exercitationem quasi officia aliquid reprehenderit praesentium culpa, quo commodi consequatur amet sunt soluta est atque officiis error debitis? Dolorum exercitationem dignissimos explicabo delectus, fugit consequatur quisquam commodi impedit repellat corrupti dolore reprehenderit! Nesciunt corporis dolor maiores! Laboriosam modi quo temporibus eaque optio. Aspernatur nesciunt maiores dolor repellat! Beatae repellat facere nobis dolore aliquam nulla exercitationem veniam reprehenderit fugiat quidem! At, maiores beatae nesciunt enim magnam, architecto natus vitae impedit autem totam unde, necessitatibus inventore! Eaque, rerum! Maiores animi ab sapiente culpa, corrupti repellat est impedit enim qui eaque quaerat quos officia odit dolorum quasi quisquam cumque minus nisi blanditiis provident voluptatum error esse. Maxime, beatae voluptates? Voluptates tempore perferendis totam consectetur quam aliquam in deserunt blanditiis illum libero dignissimos facilis, odio fugit saepe optio mollitia expedita maiores ipsam laboriosam similique dolorem accusantium architecto itaque. Ex, eum ullam commodi laboriosam ipsa odio optio eius? Dignissimos asperiores impedit fuga quis. Aperiam necessitatibus accusamus dolor ipsa nulla non! Voluptate illo cupiditate porro sequi molestias impedit similique! Iure eaque, facilis animi assumenda et dicta magni deserunt consequuntur ipsa quod quibusdam. Doloremque rerum voluptatum magnam doloribus a pariatur, voluptatem dolores eum nobis temporibus vero optio laborum voluptatibus laboriosam quibusdam laudantium quas, nulla velit ratione eligendi odio quia perspiciatis. Dicta quaerat praesentium deleniti incidunt ipsum dolorem quia sint! Provident corporis mollitia at cumque amet reprehenderit consequuntur nihil sint soluta enim, voluptas molestiae ab hic inventore veritatis laudantium. Officia commodi neque reiciendis aspernatur recusandae sunt ullam debitis culpa! Deserunt aspernatur, perferendis voluptatibus porro est autem, consequuntur, at similique in quia delectus unde. Sed, vel natus voluptatum earum facere quod ipsam non! At earum nulla quidem? Sequi, ipsam amet sapiente debitis ex nesciunt perspiciatis perferendis cupiditate architecto illo nemo tenetur! Maxime vero nihil laborum consequuntur nisi. Facere totam recusandae qui alias doloribus, hic magnam. Voluptatem, iure quasi tempora porro, dolores molestiae reiciendis harum sequi sit eligendi soluta alias et repellat, officiis repellendus! Expedita, doloribus delectus temporibus eveniet deserunt nobis laboriosam veritatis, rerum quaerat ipsum facere corporis enim voluptatibus obcaecati laudantium illo voluptates saepe consequatur, dolorem nesciunt eaque quam ipsa. Ratione qui harum autem dignissimos repudiandae expedita a tempore, reiciendis iusto? Fuga sit nisi nobis quasi maxime ratione, dolores sunt earum debitis reiciendis atque eveniet animi totam quis non similique!
+                </div>
+                <div class="chapters with-preview current-chapter">
+                    Lorem ipsum dolor sit, amet consectetur adipisicing elit. Expedita quas delectus autem molestiae cumque doloribus provident, ex pariatur officia aspernatur iste porro! Facilis iusto illum ratione unde ut cupiditate quos error, ipsa minus sapiente esse eos! Quae animi incidunt ratione tempora consectetur, rem aliquid. Maiores, error nam. Eligendi deleniti quae nihil hic pariatur cupiditate odit accusamus at error non eveniet ratione iusto vitae ea perferendis, ad molestiae mollitia? A eum quam possimus illo pariatur voluptas nulla assumenda architecto asperiores, voluptate error dicta officia dolore harum quae excepturi cum mollitia ratione sequi quia repudiandae vel aspernatur iure consequatur. Dolor id nobis ex? Blanditiis ad aut repudiandae itaque illo, perferendis tenetur, sit omnis adipisci impedit voluptate debitis veniam inventore non, quo amet provident eos. Veritatis aliquam necessitatibus architecto illum error eum porro culpa tenetur nesciunt corrupti saepe pariatur doloremque, rerum officiis nemo consequatur provident, natus soluta delectus ab quod labore aperiam. Aliquam maxime error fugit hic velit veritatis beatae nesciunt quis enim sapiente et iste nam, facilis labore unde qui quidem possimus sunt minus ut earum culpa ipsum dolores magni. Maiores blanditiis explicabo voluptatem veritatis corrupti. Pariatur possimus consequatur cum, aliquam necessitatibus omnis praesentium porro facere rerum vitae ea, natus reiciendis hic officiis eius. Nesciunt debitis dolore minima, provident molestias possimus, nobis ab, eum pariatur obcaecati tempore autem sapiente tempora accusamus aspernatur? Minus repudiandae quasi porro recusandae aspernatur nam iure sed qui obcaecati! Nisi non sit laudantium illum architecto veniam dicta rem! Consequatur minima, laborum magnam dolore numquam, dolores voluptates dignissimos sequi dolorum rem, ad corrupti necessitatibus laudantium eos quod expedita! Ullam adipisci aspernatur et, quaerat eius deserunt, architecto quasi illum, molestiae rerum porro. Iste, sunt repellat ea fugiat cumque sit consequatur ipsam maiores voluptatibus ducimus velit sapiente doloribus asperiores ut totam? Eos praesentium veritatis mollitia alias autem itaque placeat recusandae cumque labore eveniet rerum ea id neque saepe numquam, optio ut libero amet. In dolorem nostrum vitae a earum doloremque quos rerum, soluta quo delectus laudantium quam placeat, hic mollitia est culpa cum molestias nisi ad natus aspernatur tempore aperiam tempora officiis. Quae fuga perferendis, provident iusto illo voluptatem totam cum asperiores deleniti repellendus optio eaque voluptas ut nemo quasi voluptate sint repellat sunt fugit nobis unde? Optio, quos inventore. Nulla perspiciatis aperiam, cumque molestias omnis aliquid distinctio officiis dolorum porro, blanditiis id recusandae eligendi ipsum? Veritatis nostrum magnam laboriosam quae accusantium est temporibus porro laborum sequi consequuntur ratione quas quidem, voluptatem autem facilis! Aut voluptate veniam qui blanditiis, repudiandae impedit explicabo provident nisi nostrum at cupiditate debitis sunt doloremque iste quas ratione quam eligendi possimus minima quidem labore cum atque? Repudiandae libero id obcaecati sit eligendi soluta nostrum! Quia tenetur distinctio, quo aperiam maxime eaque inventore exercitationem enim corrupti laboriosam ab officia eos tempora deserunt. Suscipit vero exercitationem tenetur cupiditate tempora. Mollitia obcaecati totam assumenda illum ratione excepturi architecto nesciunt dolorem error ad? Nam magni saepe voluptatem inventore iusto sed, similique maiores dolore iure molestias ipsa, aliquam repellendus exercitationem laboriosam velit consequatur perferendis voluptatum adipisci incidunt cum? Incidunt, voluptates doloribus.
+                    <a class="footnote">footnote text</a>
+                </div>
+                <div class="chapters">
+                    Lorem ipsum dolor sit amet consectetur, adipisicing elit. Tempore beatae possimus eius blanditiis expedita nemo eveniet unde dolorem in alias ex quae maiores magnam quibusdam dolore vitae error, iste nam architecto quidem laborum sed eaque officiis! Recusandae, laborum architecto illum eum sequi quae excepturi natus reiciendis quia repudiandae aperiam quisquam, tempore voluptate nesciunt illo eveniet. Soluta officia adipisci, nobis porro minima modi repudiandae eum reiciendis tempora ipsam accusantium nemo excepturi? Vel libero inventore, ratione perferendis adipisci consectetur quasi quam veniam magni neque! Repudiandae optio iste corrupti quaerat aspernatur obcaecati porro alias dolores ipsam quos, nam rem modi tenetur aperiam asperiores. Nostrum doloribus quae laborum! Consectetur nemo voluptas odit at corrupti eos voluptates libero, ad, error ut sint, officiis iste atque modi magni deleniti ullam repellendus! Nesciunt maiores quasi eos ab, assumenda asperiores libero facere facilis voluptatum voluptas cupiditate veniam. Libero consequuntur perferendis maiores repudiandae! Voluptatum repellat fuga cupiditate? Laudantium at porro quibusdam, veritatis voluptatem minus voluptatum id iste officiis! Nisi voluptas praesentium tempora numquam vero aliquam minima dolorum optio dolores voluptatibus eveniet, ratione quia repellat cumque perferendis, exercitationem quod. Excepturi at nam quia molestias sequi, voluptatum dignissimos ab porro exercitationem! Aperiam cum non suscipit consectetur fuga minus vero earum temporibus dolorem illum atque tenetur, inventore autem officiis dicta hic ducimus, error aspernatur? Vitae laboriosam eveniet, quae libero ut quaerat maiores tenetur recusandae possimus amet exercitationem tempore doloribus enim debitis molestias quas excepturi quo voluptatibus, voluptas aliquid id similique quidem quisquam. Voluptatem, at in sint maxime qui ab repellat necessitatibus, perspiciatis quo tempore voluptates, porro illo nobis nostrum autem saepe voluptatum quia iusto reiciendis dignissimos nam soluta. Ullam suscipit neque excepturi id provident expedita odio sint officia, eius deserunt ipsam eum dolore repellat molestiae enim minima facere itaque omnis in impedit asperiores voluptatem molestias praesentium soluta? Vel accusamus qui dignissimos quos sint deleniti dolorem odit fuga eveniet voluptatibus, beatae recusandae accusantium laborum. Dolorum praesentium incidunt ea neque illum corporis quo dolorem dolores non veniam recusandae, deserunt placeat culpa libero dolor quia et architecto quasi. Reprehenderit debitis itaque quis voluptates illum odio consequuntur iure vero soluta exercitationem expedita porro ea voluptatum ratione est assumenda maiores quasi veritatis nobis deleniti saepe, impedit aspernatur ullam! Distinctio amet cum inventore harum. Aperiam error repellat placeat aspernatur distinctio unde ratione, quo iste eligendi corporis ex nisi? Temporibus velit voluptate consequatur numquam tenetur deserunt officia vel deleniti debitis vitae necessitatibus odio, facere natus eos animi ipsa ea sed quae, cumque excepturi! At, cupiditate vitae explicabo totam distinctio debitis ea hic! Tenetur fuga impedit deleniti repellat, sequi atque distinctio dolor nesciunt quas necessitatibus saepe delectus maiores veniam sapiente tempora. Voluptates quae eligendi, velit placeat fugiat esse perferendis omnis? Quaerat, dolore voluptas. Distinctio, id labore neque blanditiis nam, ipsa numquam tempora vero laborum sunt excepturi eius fuga, tenetur natus? Reiciendis similique recusandae rerum? Obcaecati explicabo et quae rem minus cupiditate quos pariatur nobis repellendus fugiat mollitia non accusantium, incidunt cumque cum officiis odio unde, beatae veniam, vel nihil reprehenderit? Dignissimos molestiae incidunt, commodi neque consequatur consectetur modi porro tempore.
+                </div>
+                <div class="chapters sub-chapter with-preview">
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus animi inventore quos dolores modi autem eligendi quod voluptatibus consequatur et ducimus magnam, temporibus repellat nobis accusamus, voluptates consectetur magni vero sint. Quibusdam iusto dolorem laudantium placeat quam nulla, nobis, rem ipsa aspernatur modi repellat. At, maiores assumenda, provident modi, eius quidem vel ea dolores dolorem doloremque tenetur. Voluptatum quidem magnam vel magni dicta hic, tempora repellat laboriosam totam impedit, officiis doloribus recusandae labore ducimus deserunt iure, commodi ipsa vero? Dicta delectus autem sed aut dolor harum aspernatur quidem. Velit fugit repellat tenetur maxime. Similique nam assumenda impedit corrupti in molestiae, ducimus qui sapiente sunt, eligendi quas odio asperiores dicta veritatis sit earum sint cupiditate inventore officia, ratione optio vero. Ipsum assumenda unde consectetur officia itaque nostrum tempore, quaerat qui quisquam, voluptatibus tempora nam ullam, labore aliquid sed minima cum incidunt consequatur praesentium recusandae. Fuga accusamus, ratione adipisci in sequi facere doloremque asperiores dolorum earum illo delectus dolorem consequatur, sint libero sunt ut pariatur dolores accusantium ducimus veniam cupiditate quod aspernatur officia saepe. Ullam vero quaerat, sed iure impedit maiores illo hic pariatur perspiciatis eos odio quos accusantium magnam voluptas harum numquam soluta repellendus eius quasi rerum. Quos facere ipsam odit voluptates ex reiciendis laudantium soluta, maiores repudiandae tempore sed facilis, hic earum deleniti? Aspernatur eius molestiae voluptates voluptatem nesciunt vero officia accusamus tempora sed fuga voluptas quis placeat quaerat natus dolor, laborum ex illum suscipit ad perferendis modi facilis porro. Alias asperiores, quos voluptas blanditiis iusto non incidunt molestias vel dicta cumque dolores cum. At consectetur quidem fuga, reiciendis tempora minus ea illum unde accusamus? Nisi itaque cum ipsum consequuntur tempore magnam consequatur reiciendis iusto pariatur culpa corporis impedit quia quisquam nesciunt fuga iste dicta rerum, quidem molestiae obcaecati sequi expedita tenetur nam. Quam cumque praesentium aut enim cum, voluptate tempore quae distinctio, iusto deserunt id doloremque nobis voluptates corrupti voluptatum dicta harum esse blanditiis odit eligendi reiciendis explicabo quis aperiam! Nobis quidem provident voluptatem nam amet temporibus sequi fuga quos inventore minus, libero exercitationem, quisquam rem et, asperiores natus itaque ipsam vero. Ipsum quae et beatae delectus repellendus quas qui dolore sed suscipit quisquam quos, numquam officiis consectetur modi doloribus, adipisci explicabo accusamus corrupti minus deleniti culpa harum? Quia illum, non ab labore similique libero dolore, quis ullam fugit veniam nulla? Atque ea itaque totam facere neque quia, porro illo quos ipsum quisquam tempore recusandae corporis, dolorum fuga repellat commodi asperiores quidem optio suscipit ipsam debitis repellendus modi impedit explicabo! Deserunt facere pariatur optio at ipsam libero delectus sequi! Accusantium expedita quo earum. Ratione aut quibusdam delectus vel a libero hic cumque? Possimus libero quaerat magnam nulla numquam illum, iste assumenda ratione sit doloremque cum, aspernatur nam quia sint quae nostrum suscipit natus nesciunt? Ea magnam inventore eveniet molestias placeat aliquam accusamus culpa. Quos quisquam at laboriosam in perspiciatis sequi dolorum, numquam, nam fugit unde, non nostrum aliquam tempore? Cupiditate tempore sed perferendis qui! Asperiores autem vero doloribus doloremque facilis ad, velit nulla, corrupti nam ratione voluptates sapiente laudantium.
+                </div>
+                <div class="chapters sub-chapter">
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Adipisci unde veniam impedit maxime eum doloribus distinctio aut soluta quam deserunt? Quae aspernatur deserunt explicabo repudiandae error. Odit expedita unde maxime? Exercitationem tempora quae quam molestias obcaecati voluptas, iure ut aperiam voluptatibus hic vero. Eum quaerat magni, velit molestias praesentium ducimus, iure, corporis obcaecati laudantium assumenda quibusdam tempore quam unde. Aspernatur non numquam ad aperiam voluptates provident mollitia eligendi vitae officia nisi, rem nam deleniti fuga, beatae ratione inventore? Facilis atque quas rerum, accusamus a iste minus quae, magnam, cumque autem suscipit obcaecati unde cupiditate expedita recusandae in! Quae placeat provident incidunt neque iste iusto veritatis quis at impedit minima nostrum voluptate dicta maxime, rerum numquam ad eligendi laudantium ipsam. Omnis saepe laudantium veniam magnam labore necessitatibus ratione tempore placeat exercitationem quasi officia aliquid reprehenderit praesentium culpa, quo commodi consequatur amet sunt soluta est atque officiis error debitis? Dolorum exercitationem dignissimos explicabo delectus, fugit consequatur quisquam commodi impedit repellat corrupti dolore reprehenderit! Nesciunt corporis dolor maiores! Laboriosam modi quo temporibus eaque optio. Aspernatur nesciunt maiores dolor repellat! Beatae repellat facere nobis dolore aliquam nulla exercitationem veniam reprehenderit fugiat quidem! At, maiores beatae nesciunt enim magnam, architecto natus vitae impedit autem totam unde, necessitatibus inventore! Eaque, rerum! Maiores animi ab sapiente culpa, corrupti repellat est impedit enim qui eaque quaerat quos officia odit dolorum quasi quisquam cumque minus nisi blanditiis provident voluptatum error esse. Maxime, beatae voluptates? Voluptates tempore perferendis totam consectetur quam aliquam in deserunt blanditiis illum libero dignissimos facilis, odio fugit saepe optio mollitia expedita maiores ipsam laboriosam similique dolorem accusantium architecto itaque. Ex, eum ullam commodi laboriosam ipsa odio optio eius? Dignissimos asperiores impedit fuga quis. Aperiam necessitatibus accusamus dolor ipsa nulla non! Voluptate illo cupiditate porro sequi molestias impedit similique! Iure eaque, facilis animi assumenda et dicta magni deserunt consequuntur ipsa quod quibusdam. Doloremque rerum voluptatum magnam doloribus a pariatur, voluptatem dolores eum nobis temporibus vero optio laborum voluptatibus laboriosam quibusdam laudantium quas, nulla velit ratione eligendi odio quia perspiciatis. Dicta quaerat praesentium deleniti incidunt ipsum dolorem quia sint! Provident corporis mollitia at cumque amet reprehenderit consequuntur nihil sint soluta enim, voluptas molestiae ab hic inventore veritatis laudantium. Officia commodi neque reiciendis aspernatur recusandae sunt ullam debitis culpa! Deserunt aspernatur, perferendis voluptatibus porro est autem, consequuntur, at similique in quia delectus unde. Sed, vel natus voluptatum earum facere quod ipsam non! At earum nulla quidem? Sequi, ipsam amet sapiente debitis ex nesciunt perspiciatis perferendis cupiditate architecto illo nemo tenetur! Maxime vero nihil laborum consequuntur nisi. Facere totam recusandae qui alias doloribus, hic magnam. Voluptatem, iure quasi tempora porro, dolores molestiae reiciendis harum sequi sit eligendi soluta alias et repellat, officiis repellendus! Expedita, doloribus delectus temporibus eveniet deserunt nobis laboriosam veritatis, rerum quaerat ipsum facere corporis enim voluptatibus obcaecati laudantium illo voluptates saepe consequatur, dolorem nesciunt eaque quam ipsa. Ratione qui harum autem dignissimos repudiandae expedita a tempore, reiciendis iusto? Fuga sit nisi nobis quasi maxime ratione, dolores sunt earum debitis reiciendis atque eveniet animi totam quis non similique!
+                </div>
+                <div class="chapters">
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Adipisci unde veniam impedit maxime eum doloribus distinctio aut soluta quam deserunt? Quae aspernatur deserunt explicabo repudiandae error. Odit expedita unde maxime? Exercitationem tempora quae quam molestias obcaecati voluptas, iure ut aperiam voluptatibus hic vero. Eum quaerat magni, velit molestias praesentium ducimus, iure, corporis obcaecati laudantium assumenda quibusdam tempore quam unde. Aspernatur non numquam ad aperiam voluptates provident mollitia eligendi vitae officia nisi, rem nam deleniti fuga, beatae ratione inventore? Facilis atque quas rerum, accusamus a iste minus quae, magnam, cumque autem suscipit obcaecati unde cupiditate expedita recusandae in! Quae placeat provident incidunt neque iste iusto veritatis quis at impedit minima nostrum voluptate dicta maxime, rerum numquam ad eligendi laudantium ipsam. Omnis saepe laudantium veniam magnam labore necessitatibus ratione tempore placeat exercitationem quasi officia aliquid reprehenderit praesentium culpa, quo commodi consequatur amet sunt soluta est atque officiis error debitis? Dolorum exercitationem dignissimos explicabo delectus, fugit consequatur quisquam commodi impedit repellat corrupti dolore reprehenderit! Nesciunt corporis dolor maiores! Laboriosam modi quo temporibus eaque optio. Aspernatur nesciunt maiores dolor repellat! Beatae repellat facere nobis dolore aliquam nulla exercitationem veniam reprehenderit fugiat quidem! At, maiores beatae nesciunt enim magnam, architecto natus vitae impedit autem totam unde, necessitatibus inventore! Eaque, rerum! Maiores animi ab sapiente culpa, corrupti repellat est impedit enim qui eaque quaerat quos officia odit dolorum quasi quisquam cumque minus nisi blanditiis provident voluptatum error esse. Maxime, beatae voluptates? Voluptates tempore perferendis totam consectetur quam aliquam in deserunt blanditiis illum libero dignissimos facilis, odio fugit saepe optio mollitia expedita maiores ipsam laboriosam similique dolorem accusantium architecto itaque. Ex, eum ullam commodi laboriosam ipsa odio optio eius? Dignissimos asperiores impedit fuga quis. Aperiam necessitatibus accusamus dolor ipsa nulla non! Voluptate illo cupiditate porro sequi molestias impedit similique! Iure eaque, facilis animi assumenda et dicta magni deserunt consequuntur ipsa quod quibusdam. Doloremque rerum voluptatum magnam doloribus a pariatur, voluptatem dolores eum nobis temporibus vero optio laborum voluptatibus laboriosam quibusdam laudantium quas, nulla velit ratione eligendi odio quia perspiciatis. Dicta quaerat praesentium deleniti incidunt ipsum dolorem quia sint! Provident corporis mollitia at cumque amet reprehenderit consequuntur nihil sint soluta enim, voluptas molestiae ab hic inventore veritatis laudantium. Officia commodi neque reiciendis aspernatur recusandae sunt ullam debitis culpa! Deserunt aspernatur, perferendis voluptatibus porro est autem, consequuntur, at similique in quia delectus unde. Sed, vel natus voluptatum earum facere quod ipsam non! At earum nulla quidem? Sequi, ipsam amet sapiente debitis ex nesciunt perspiciatis perferendis cupiditate architecto illo nemo tenetur! Maxime vero nihil laborum consequuntur nisi. Facere totam recusandae qui alias doloribus, hic magnam. Voluptatem, iure quasi tempora porro, dolores molestiae reiciendis harum sequi sit eligendi soluta alias et repellat, officiis repellendus! Expedita, doloribus delectus temporibus eveniet deserunt nobis laboriosam veritatis, rerum quaerat ipsum facere corporis enim voluptatibus obcaecati laudantium illo voluptates saepe consequatur, dolorem nesciunt eaque quam ipsa. Ratione qui harum autem dignissimos repudiandae expedita a tempore, reiciendis iusto? Fuga sit nisi nobis quasi maxime ratione, dolores sunt earum debitis reiciendis atque eveniet animi totam quis non similique!
+                </div>
+                <div class="chapters">
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Adipisci unde veniam impedit maxime eum doloribus distinctio aut soluta quam deserunt? Quae aspernatur deserunt explicabo repudiandae error. Odit expedita unde maxime? Exercitationem tempora quae quam molestias obcaecati voluptas, iure ut aperiam voluptatibus hic vero. Eum quaerat magni, velit molestias praesentium ducimus, iure, corporis obcaecati laudantium assumenda quibusdam tempore quam unde. Aspernatur non numquam ad aperiam voluptates provident mollitia eligendi vitae officia nisi, rem nam deleniti fuga, beatae ratione inventore? Facilis atque quas rerum, accusamus a iste minus quae, magnam, cumque autem suscipit obcaecati unde cupiditate expedita recusandae in! Quae placeat provident incidunt neque iste iusto veritatis quis at impedit minima nostrum voluptate dicta maxime, rerum numquam ad eligendi laudantium ipsam. Omnis saepe laudantium veniam magnam labore necessitatibus ratione tempore placeat exercitationem quasi officia aliquid reprehenderit praesentium culpa, quo commodi consequatur amet sunt soluta est atque officiis error debitis? Dolorum exercitationem dignissimos explicabo delectus, fugit consequatur quisquam commodi impedit repellat corrupti dolore reprehenderit! Nesciunt corporis dolor maiores! Laboriosam modi quo temporibus eaque optio. Aspernatur nesciunt maiores dolor repellat! Beatae repellat facere nobis dolore aliquam nulla exercitationem veniam reprehenderit fugiat quidem! At, maiores beatae nesciunt enim magnam, architecto natus vitae impedit autem totam unde, necessitatibus inventore! Eaque, rerum! Maiores animi ab sapiente culpa, corrupti repellat est impedit enim qui eaque quaerat quos officia odit dolorum quasi quisquam cumque minus nisi blanditiis provident voluptatum error esse. Maxime, beatae voluptates? Voluptates tempore perferendis totam consectetur quam aliquam in deserunt blanditiis illum libero dignissimos facilis, odio fugit saepe optio mollitia expedita maiores ipsam laboriosam similique dolorem accusantium architecto itaque. Ex, eum ullam commodi laboriosam ipsa odio optio eius? Dignissimos asperiores impedit fuga quis. Aperiam necessitatibus accusamus dolor ipsa nulla non! Voluptate illo cupiditate porro sequi molestias impedit similique! Iure eaque, facilis animi assumenda et dicta magni deserunt consequuntur ipsa quod quibusdam. Doloremque rerum voluptatum magnam doloribus a pariatur, voluptatem dolores eum nobis temporibus vero optio laborum voluptatibus laboriosam quibusdam laudantium quas, nulla velit ratione eligendi odio quia perspiciatis. Dicta quaerat praesentium deleniti incidunt ipsum dolorem quia sint! Provident corporis mollitia at cumque amet reprehenderit consequuntur nihil sint soluta enim, voluptas molestiae ab hic inventore veritatis laudantium. Officia commodi neque reiciendis aspernatur recusandae sunt ullam debitis culpa! Deserunt aspernatur, perferendis voluptatibus porro est autem, consequuntur, at similique in quia delectus unde. Sed, vel natus voluptatum earum facere quod ipsam non! At earum nulla quidem? Sequi, ipsam amet sapiente debitis ex nesciunt perspiciatis perferendis cupiditate architecto illo nemo tenetur! Maxime vero nihil laborum consequuntur nisi. Facere totam recusandae qui alias doloribus, hic magnam. Voluptatem, iure quasi tempora porro, dolores molestiae reiciendis harum sequi sit eligendi soluta alias et repellat, officiis repellendus! Expedita, doloribus delectus temporibus eveniet deserunt nobis laboriosam veritatis, rerum quaerat ipsum facere corporis enim voluptatibus obcaecati laudantium illo voluptates saepe consequatur, dolorem nesciunt eaque quam ipsa. Ratione qui harum autem dignissimos repudiandae expedita a tempore, reiciendis iusto? Fuga sit nisi nobis quasi maxime ratione, dolores sunt earum debitis reiciendis atque eveniet animi totam quis non similique!
+                </div>
+            </div>
+            <div class="footer">
+                <div class="controls">
+                    <div class="arrows">
+                        <i class="fas fa-arrow-circle-up chapter-up"></i>
+                        <i class="fas fa-arrow-circle-down chapter-down"></i>
+                    </div>
+                    <div class="close-footnote d-none">
+                        <i class="fas fa-times-circle"></i>
+                    </div>
+                </div>
+                <div class="foot-notes">
+                    <p>
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cumque quidem hic aut dolorem nihil amet, debitis inventore quam esse reprehenderit eos molestias, illo, repudiandae ratione quia. Saepe, sequi? Dignissimos iusto soluta animi laudantium, corporis blanditiis corrupti. Velit sapiente possimus error fuga soluta perferendis eum nemo. Nemo quod doloribus praesentium totam.
+                    </p>
+                </div>
+>>>>>>> main
             </div>
         </div>
     </div>

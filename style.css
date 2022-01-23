@@ -4,11 +4,11 @@
   box-sizing: border-box;
   --black: #000;
   --white: rgb(248, 248, 248);
-  --blue-accent: #990707;
+  --blue-accent: #075299;
 
   --book-cover-fallback: #89c3f8;
 
-  --header-heights: 3rem;
+  --header-heights: 2.5rem;
   --border-radius: 22.5px;
 }
 @font-face {
@@ -97,9 +97,10 @@ h4,
 img {
   max-width: 100%;
 }
+
+#accordion-cover,
 .containers,
-.book-cover,
-#accordion-cover {
+.book-cover {
   height: 100vh;
 
   transition: transform 0.75s ease-in;
@@ -113,7 +114,7 @@ img {
   background-size: cover;
   background-repeat: no-repeat;
 
-  color: rgba(255, 255, 255, 0.68);
+  color: var(--white);
 
   display: flex;
   flex-direction: column;
@@ -124,8 +125,11 @@ img {
   transform: translateY(-100%);
 }
 .preview-button {
-  height: 100px;
-  width: 200px;
+  height: 15%;
+  width: 45%;
+  max-height: 15vh;
+  max-width: 200px;
+
   display: flex;
   justify-content: center;
   align-items: center;
@@ -155,9 +159,9 @@ img {
   align-items: center;
   z-index: 11;
 }
-.fixed {
-  position: fixed;
-  top: 100vh;
+.go-back i {
+  transform: rotate(0deg);
+  transition: all 0.5s ease;
 }
 .fixed i {
   transform: rotate(-180deg);
@@ -270,7 +274,8 @@ img {
   z-index:222;
   align-items: center;
 }
-.header {
+.header,
+.go-back {
   padding: 10px;
   height: var(--header-heights);
   background-color: var(--book-cover-fallback);
@@ -282,9 +287,10 @@ img {
   margin-right: auto;
 }
 .header .return,
+.go-back,
 .footer .controls > * {
   padding: 0;
-  font-size: 2rem;
+  font-size: calc(var(--header-heights) - 1rem);
 }
 .footer {
   transition: 0.75s ease;
@@ -294,7 +300,12 @@ img {
 .footer.open {
   top: 50vh;
 }
-.controls {
+.content-library .go-back {
+  top: 100vh;
+}
+.footer .controls {
+  height: var(--header-heights);
+
   background-color: var(--book-cover-fallback);
 
   border-radius: var(--border-radius) var(--border-radius) 0 0;
@@ -319,13 +330,13 @@ img {
   transition: 0.75s ease;
 }
 .chapters {
-  padding: var(--header-heights) 0em;
+  padding: var(--header-heights) 1rem;
   background-color: var(--white);
   width: 100%;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
 
   position: absolute;
