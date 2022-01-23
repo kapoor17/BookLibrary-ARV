@@ -8,14 +8,15 @@
     const contentlibrary=accordionCover.querySelector(".content-library");
     const goToTop=accordionCover.querySelector(".go-back");
     const accordion=accordionCover.querySelector(".accordion");
-    const bookContentWP = accordionCover.querySelectorAll(".accordion-item.with-preview");
-    const bookContent = accordionCover.querySelectorAll(".accordion-item:not(.with-sub-chapters)");
+    const bookContentWP = accordionCover.querySelectorAll(".chapter-nav.with-preview");
+    const bookContent = accordionCover.querySelectorAll(".chapter-nav");
     
     //main-book objects
 
     const mainBook=document.querySelector("#main-book");
 
     const returnButton=mainBook.querySelector(".return");
+    const headerTitle=mainBook.querySelector(".chapter-title");
     
     const chapterContainer=mainBook.querySelector(".book-content");
     const bookChapters = Array.from(chapterContainer.children);
@@ -38,36 +39,32 @@
         accordionCover.classList.add("variable-height-class");
         setTimeout(() => {
             goToTop.classList.add("fixed");
-            contentlibrary.classList.add("pt-5");
-        }, 1000);
+        }, 750);
     })
 
     goToTop.firstElementChild.addEventListener("click",()=>{
         goToTop.classList.remove("fixed");
-        contentlibrary.classList.remove("pt-5");
-        accordionCover.classList.remove("variable-height-class");
+        setTimeout(() => {
+            accordionCover.classList.remove("variable-height-class");
+        }, 300);
     })
-
-
-    // accordion.addEventListener("click",(e)=>{
-    //     console.log(e.target.closest("div"));
-    //     if(e.target.closest("div")){
-    //         if(e.tar)
-    //         mainBook.classList.remove("slide-main-book-out");
-    //         mainBook.classList.add("slide-main-book-in");
-    //     }
-    // })
     
     bookContent.forEach((content,index)=>{
 
         content.addEventListener("click",()=>{
             
-            // if(content.classList.contains("with-preview")){
+            if(content.classList.contains("with-preview")){
+                
                 
                 const currentNav= contentlibrary.querySelector(".current-chapter")
                 if(currentNav)
                     currentNav.classList.remove("current-chapter");
+                
+                const chapterTitle=content.querySelector(".accordion-header p");
+                updateHeaderTitle(chapterTitle);
+                
                 content.classList.add("current-chapter");
+
 
                 mainBook.classList.remove("slide-main-book-out");
                 mainBook.classList.add("slide-main-book-in");
@@ -77,7 +74,7 @@
 
                 moveChapters(chapterContainer, currentChapter, targetChapter);
 
-            // }
+            }
         })
     })
     
@@ -90,8 +87,20 @@
     chapterDown.addEventListener("click",()=>{
         const currentChapter=chapterContainer.querySelector(".current-chapter");
         const nextChapter=currentChapter.nextElementSibling;
+
         const currentNav= contentlibrary.querySelector(".current-chapter");
-        const nextNav=currentNav.nextElementSibling;
+        var nextNav=currentNav.nextElementSibling;
+
+        if(!nextNav){
+            var nextNavContainer=currentNav.closest("div.with-sub-chapters");
+            nextNav=nextNavContainer.nextElementSibling;
+        }
+
+        if(nextNav.classList.contains("with-sub-chapters")){
+            var nextNavContainer=nextNav.querySelector(".inner-accordion");
+            
+            nextNav=nextNavContainer.firstElementChild;
+        }
 
         moveChapters(chapterContainer,currentChapter,nextChapter);
         updateDots(currentNav,nextNav);
@@ -101,8 +110,21 @@
     chapterUp.addEventListener("click",()=>{
         const currentChapter=chapterContainer.querySelector(".current-chapter");
         const prevChapter=currentChapter.previousElementSibling;
+
         const currentNav= contentlibrary.querySelector(".current-chapter");
-        const nextNav=currentNav.previousElementSibling;
+        var nextNav=currentNav.previousElementSibling;
+
+        if(!nextNav){
+            var nextNavContainer=currentNav.closest("div.with-sub-chapters");
+            nextNav=nextNavContainer.previousElementSibling;
+        }
+
+        if(nextNav.classList.contains("with-sub-chapters")){
+            var nextNavContainer=nextNav.querySelector(".inner-accordion");
+            
+            nextNav=nextNavContainer.lastElementChild;
+        }
+
         moveChapters(chapterContainer,currentChapter,prevChapter);
         updateDots(currentNav,nextNav);
 
@@ -134,10 +156,17 @@
         currentChapter.classList.remove("current-chapter");
         targetChapter.classList.add("current-chapter");
     }
-
+    
     const updateDots=(currentNav,targetNav)=>{
+        const chapterTitle=targetNav.querySelector(".accordion-header p")
+        updateHeaderTitle(chapterTitle);
+
         if(currentNav)
             currentNav.classList.remove("current-chapter");
         if(targetNav)
             targetNav.classList.add("current-chapter")
+    }
+
+    const updateHeaderTitle=(targetTitle)=>{
+        headerTitle.innerHTML=targetTitle.innerHTML;
     }
