@@ -27,6 +27,21 @@
   font-family: accordion-text-font;
   src: url(./Assets/Helvetica\ Neue\ LT\ 43\ Light\ Extended.ttf);
 }
+::-webkit-scrollbar {
+  width: 5px;
+}
+
+::-webkit-scrollbar-track {
+  background: #ffffff;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgb(182, 182, 182);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
 
 html,
 body {
@@ -323,6 +338,9 @@ img {
   /* word-spacing: 5px; */
   background-color: var(--white);
   line-height: 2rem;
+}
+.chapters .footnote {
+  cursor: pointer;
 }
 .foot-notes {
   height: 50vh;

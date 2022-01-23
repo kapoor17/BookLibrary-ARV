@@ -29,6 +29,27 @@
     const footnoteContainer = footer.querySelector(".foot-notes")
 
 //values from dom
+
+// var lastScrollTop = 0;
+
+// document.addEventListener("scroll", function(){
+//     alert();
+//    var st = window.pageYOffset || document.documentElement.scrollTop;
+//    if (st > lastScrollTop){
+//       // downscroll code
+//       goToTop.classList.remove("fixed");
+//         setTimeout(() => {
+//             accordionCover.classList.remove("variable-height-class");
+//         }, 300);
+//    } else {
+//       // upscroll code
+//       accordionCover.classList.add("variable-height-class");
+//         setTimeout(() => {
+//             goToTop.classList.add("fixed");
+//         }, 750);
+//    }
+//    lastScrollTop = st <= 0 ? 0 : st; 
+// }, false);
     
 //events
     bookPreview.addEventListener("click",()=>{
