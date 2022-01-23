@@ -38,11 +38,10 @@
         accordionCover.classList.add("variable-height-class");
         setTimeout(() => {
             goToTop.classList.add("fixed");
-            contentlibrary.classList.add("pt-5");
         }, 1000);
     })
 
-    goToTop.firstElementChild.addEventListener("click",()=>{
+    goToTop.addEventListener("click",()=>{
         goToTop.classList.remove("fixed");
         contentlibrary.classList.remove("pt-5");
         accordionCover.classList.remove("variable-height-class");
@@ -141,3 +140,20 @@
         if(targetNav)
             targetNav.classList.add("current-chapter")
     }
+
+    var focusState=0;
+    $(".book-content").on("click",function(){
+        if(focusState==0)
+        {
+            focusState=1;
+            $(".book-content").addClass("p-0");
+            $(".header").addClass('slide-up');
+            $(".footer").addClass('slide-down');
+            return;
+        }
+        focusState=0;
+        $(".book-content").removeClass("p-0");
+        $(".header").removeClass('slide-up');
+        $(".footer").removeClass('slide-down');
+
+    })
