@@ -190,7 +190,8 @@ img {
   box-shadow: inset 0 -1px 0 rgba(0, 0, 0, 0.125);
 }
 .current-chapter .accordion-preview {
-  color: var(--blue-accent);
+  background-color: #cddff0;
+  color:var(--blue-accent);
 }
 .accordion-item .accordion-body {
   display: flex;
@@ -274,39 +275,20 @@ img {
 .header .return {
   margin-right: auto;
 }
-.header .return,
-.go-back,
-.footer .controls > * {
-  padding: 0;
-  font-size: calc(var(--header-heights) - 1rem);
-}
 .footer {
   transition: 0.75s ease;
+  padding: 10px;
   flex-direction: column;
-  top: calc(100vh - var(--header-heights));
-}
-.footer.open {
-  top: 50vh;
-}
-.content-library .go-back {
-  top: 100vh;
+  bottom: 0px;
 }
 .footer .controls {
-  border-radius: var(--border-radius) var(--border-radius) 0 0;
   width: 100%;
   display: flex;
   justify-content: space-around;
   align-items: center;
-}
-.controls .arrows {
-  width: 100%;
-  font-size:0.9rem;
   color:whitesmoke;
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
 }
-.foot-notes {
+.foot-note {
   overflow: scroll;
   padding: 1em;
 }

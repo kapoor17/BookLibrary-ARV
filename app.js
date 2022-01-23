@@ -25,11 +25,9 @@
     
     const footer = mainBook.querySelector(".footer");
     const controls = footer.querySelector(".controls");
-    const arrows = controls.querySelector(".arrows");
     const chapterUp=controls.querySelector(".chapter-up");
     const chapterDown=controls.querySelector(".chapter-down");
-    const closeFootnote = controls.querySelector(".close-footnote");
-    const footnoteContainer = footer.querySelector(".foot-notes")
+    const footnoteContainer = footer.querySelector(".foot-note")
 
 //values from dom
     
@@ -134,15 +132,9 @@
 
     footnote.addEventListener("click",()=>{
         footer.classList.add("open");
-        arrows.classList.add("d-none");
-        closeFootnote.classList.remove("d-none");
     })
 
-    closeFootnote.addEventListener("click",()=>{
-        footer.classList.remove("open");
-        arrows.classList.remove("d-none");
-        closeFootnote.classList.add("d-none");
-    })
+   
     
 
 //functinons
@@ -169,7 +161,7 @@
     }
 
     var focusState=0;
-    $(".chapter-content").on("click",function(){
+    $(".chapter-content:not(.footnote)").on("click",function(){
         if(focusState==0)
         {
             focusState=1;
@@ -183,6 +175,9 @@
         $(".header").removeClass('slide-up');
         $(".footer").removeClass('slide-down');
 
+    });
+    $(".footnote").on("click",function(){
+        
     })
     const updateHeaderTitle=(targetTitle)=>{
         headerTitle.innerHTML=targetTitle.innerHTML;
