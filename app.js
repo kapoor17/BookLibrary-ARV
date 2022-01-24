@@ -85,7 +85,6 @@
     bookContent.forEach((content,index)=>{
         content.addEventListener("click",()=>{
             if(content.classList.contains("with-preview")){               
-                location.hash="#content";
                 const currentNav= contentlibrary.querySelector(".current-chapter")
                 if(currentNav)
                     currentNav.classList.remove("current-chapter");
@@ -113,14 +112,6 @@
         mainBook.classList.remove("slide-main-book-in");
     }) 
 
-    window.onhashchange=()=>{
-        if(mainBook.classList.contains("slide-main-book-in")){
-            mainBook.classList.add("slide-main-book-out");
-            mainBook.classList.remove("slide-main-book-in");
-        }
-        else return;
-            
-    }
 
     pagesContainer.addEventListener('touchstart', handleTouchStart, false);        
     pagesContainer.addEventListener('touchmove', handleTouchMove, false);

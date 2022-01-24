@@ -114,7 +114,7 @@ img {
   background-size: cover;
   background-repeat: no-repeat;
 
-  color: var(--white);
+  color: var(--accent-color-lighter);
 
   display: flex;
   flex-direction: column;
@@ -229,7 +229,7 @@ img {
   margin: 0.5em 0;
   padding: 0.25em;
   background: none;
-  background-color: var(--white);
+  background-color: var(--accent-color-lighter);
   border: 1px solid var(--black);
   border-radius: 3px;
   align-self: center;
