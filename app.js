@@ -12,11 +12,16 @@
 
     const mainBook=document.querySelector("#main-book");
 
+    const bookCover = accordionCover.querySelector(".book-cover");
     const returnButton=mainBook.querySelector(".return");
     const headerTitle=mainBook.querySelector(".chapter-title");
     
     const chapterContainer=mainBook.querySelector(".book-content");
     const bookChapters = Array.from(chapterContainer.children);
+
+    const pagesContainer=mainBook.querySelector(".page-carousel-container");
+    const bookPages=Array.from(pagesContainer.children);
+
     const bookChaptersWP = mainBook.querySelectorAll(".chapters.with-preview");
     const footnote = mainBook.querySelector(".footnote")
     
@@ -29,29 +34,19 @@
     const footnoteContainer = footer.querySelector(".foot-notes")
 
 //values from dom
+    var loggedIn=false;
+    var xDown = null;                                                        
+    var yDown = null;
 
-// var lastScrollTop = 0;
 
-// document.addEventListener("scroll", function(){
-//     alert();
-//    var st = window.pageYOffset || document.documentElement.scrollTop;
-//    if (st > lastScrollTop){
-//       // downscroll code
-//       goToTop.classList.remove("fixed");
-//         setTimeout(() => {
-//             accordionCover.classList.remove("variable-height-class");
-//         }, 300);
-//    } else {
-//       // upscroll code
-//       accordionCover.classList.add("variable-height-class");
-//         setTimeout(() => {
-//             goToTop.classList.add("fixed");
-//         }, 750);
-//    }
-//    lastScrollTop = st <= 0 ? 0 : st; 
-// }, false);
-    
 //events
+    bookCover.addEventListener('touchstart', handleTouchStart, false);        
+    bookCover.addEventListener('touchmove', handleTouchMove, false);
+
+    contentlibrary.addEventListener('touchstart', handleTouchStart, false);        
+    contentlibrary.addEventListener('touchmove', handleTouchMove, false);
+
+
     bookPreview.addEventListener("click",()=>{
         accordionCover.classList.add("variable-height-class");
         setTimeout(() => {
@@ -67,7 +62,6 @@
     })
     
     bookContent.forEach((content,index)=>{
-
         content.addEventListener("click",()=>{
             
             if(content.classList.contains("with-preview")){
@@ -100,6 +94,8 @@
         mainBook.classList.remove("slide-main-book-in");
     }) 
 
+    pagesContainer.addEventListener('touchstart', handleTouchStart, false);        
+    pagesContainer.addEventListener('touchmove', handleTouchMove, false);
 
     chapterDown.addEventListener("click",()=>{
         const currentChapter=chapterContainer.querySelector(".current-chapter");
@@ -167,11 +163,92 @@
     
 
 //functinons
-    const setBookPosition=(bookChapters,index)=>{
-        bookChapters.style.top=100*index+"vh"; 
-    };
+    function getTouches(evt) {
+        return evt.touches ||             // browser API
+        evt.originalEvent.touches; // jQuery
+    }                                                     
+                                                                           
+    function handleTouchStart(evt) {
+        const firstTouch = getTouches(evt)[0];                                      
+        xDown = firstTouch.clientX;                                      
+        yDown = firstTouch.clientY;                                      
+    };                                                
+                                                                           
+    function handleTouchMove(evt) {
+        if ( ! xDown || ! yDown ) {
+            return;
+        }
+  
+        var xUp = evt.touches[0].clientX;                                    
+        var yUp = evt.touches[0].clientY;
+  
+        var xDiff = xDown - xUp;
+        var yDiff = yDown - yUp;
+                                                                           
+        if ( Math.abs( xDiff ) > Math.abs( yDiff ) ) {/*most significant*/
+            if ( xDiff > 0 ) {
+                /* right swipe */
 
-    bookChapters.forEach(setBookPosition);
+                
+
+                /*pageCarousel*/
+                if(this.classList.contains("page-carousel-container")){
+
+                    mainBook.classList.add("reading");
+    
+                    const currentPage=pagesContainer.querySelector(".current-page");
+                    const nextPage=currentPage.nextElementSibling;
+    
+                    movePage(pagesContainer,currentPage,nextPage);
+                }
+            } else {
+                /* left swipe */
+
+                
+                                
+                /*pageCarousel*/
+                if(this.classList.contains("page-carousel-container")){
+
+                    const currentPage=pagesContainer.querySelector(".current-page");
+                    const prevPage=currentPage.previousElementSibling;
+
+                    movePage(pagesContainer,currentPage,prevPage);
+                }
+            }                       
+        } else {
+            if ( yDiff > 0 ) {
+                /* down swipe */ 
+                mainBook.classList.remove("reading");
+
+                /*bookCover*/
+                if(this.classList.contains("book-cover")){
+                    accordionCover.classList.add("variable-height-class");
+                    setTimeout(() => {
+                        goToTop.classList.add("fixed");
+                    }, 750);
+                }
+            } else { 
+                /* up swipe */
+                mainBook.classList.add("reading");
+
+                /*bookCover*/
+                if(this.classList.contains("content-library")){
+                    goToTop.classList.remove("fixed");
+                    setTimeout(() => {
+                        accordionCover.classList.remove("variable-height-class");
+                    }, 300);
+                }
+            }                                                                 
+        }
+        /* reset values */
+        xDown = null;
+        yDown = null;                                             
+      };
+
+
+
+
+
 
     const moveChapters=(chapterContainer,currentChapter,targetChapter)=>{
         targetChapter.scrollTo(0,0);
@@ -179,6 +256,31 @@
         currentChapter.classList.remove("current-chapter");
         targetChapter.classList.add("current-chapter");
     }
+
+    const movePage=(pagesContainer,currentPage,targetPage)=>{
+        pagesContainer.style.transform="translateX(-"+targetPage.style.left+")";
+        currentPage.classList.remove("current-page");
+        targetPage.classList.add("current-page");
+    }
+
+    const setBookPosition=(bookChapters,index)=>{
+        bookChapters.style.top=100*index+"vh"; 
+    };
+
+    bookChapters.forEach(setBookPosition);
+
+    const findPages=(bookChapters)=>{
+        const bookPages = bookChapters.querySelectorAll(".pages");
+        bookPages.forEach(setPagePosition);
+    }
+    
+    const setPagePosition=(bookpage,index)=>{
+        bookpage.style.left=100*index+"%"; 
+    }
+
+    bookChapters.forEach(findPages);
+
+
     
     const updateDots=(currentNav,targetNav)=>{
         const chapterTitle=targetNav.querySelector(".accordion-header p")
@@ -193,3 +295,38 @@
     const updateHeaderTitle=(targetTitle)=>{
         headerTitle.innerHTML=targetTitle.innerHTML;
     }
+
+    // const divideChapterText=(chapter,index)=>{
+    //     const parentHeight = chapter.getBoundingClientRect().height
+    //     const chapterHeight = chapter.firstElementChild.getBoundingClientRect().height;
+    //     const numberOfPages = Math.floor(chapterHeight/parentHeight)+1;
+
+    //     console.log(chapterHeight,parentHeight);
+
+    //     for(var i=1;i<numberOfPages;i++){
+    //         var newPage=document.createElement("p");
+    //         newPage.classList.add(i);
+    //         newPage.classList.add("pages");
+    //         chapter.appendChild(newPage);
+    //     }
+    //     console.log(chapter.children)
+    // }
+
+    // bookChapters.forEach(divideChapterText);
+
+    const LogFunctions=()=>{
+        if(loggedIn){
+            //logIn Functions
+            const previewRibbons=accordionCover.querySelectorAll(".corner-ribbon");
+            previewRibbons.forEach(ribbon=>{
+                ribbon.classList.add("d-none");
+            })
+        }
+        else{
+            //logOut Functions
+
+        }
+        
+    }
+
+    LogFunctions();
