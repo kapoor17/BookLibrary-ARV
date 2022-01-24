@@ -35,6 +35,7 @@
 
     bookPreview.addEventListener("click",()=>{
         accordionCover.classList.add("variable-height-class");
+        accordionCover.focus();
         setTimeout(() => {
             goToTop.classList.add("fixed");
         }, 750);
@@ -45,6 +46,7 @@
         setTimeout(() => {
             accordionCover.classList.remove("variable-height-class");
         }, 300);
+        bookCover.focus();
     })
     
     bookContent.forEach((content,index)=>{
@@ -193,8 +195,54 @@
     $(".footnote").on("click",function(event){
         event.stopPropagation();
         $(".foot-note").removeClass("slide-down");
-        
+
     })
     const updateHeaderTitle=(targetTitle)=>{
         headerTitle.innerHTML=targetTitle.innerHTML;
     }
+    // $("#main-container").on("scroll",function(event){
+    //     event.preventDefault();
+    // })
+
+    //scrolling effects
+    var ts;
+    $(".book-cover").bind('touchstart', function (e){
+        ts = e.originalEvent.touches[0].clientY;
+    });
+
+    $(".book-cover").bind('touchend', function (e){
+        var te = e.originalEvent.changedTouches[0].clientY;
+        if(ts > te+5){
+            $(bookPreview).click();
+        }
+    });
+    
+    $(".book-cover").on("wheel",function(e){
+        var delta = e.originalEvent.deltaY;
+        if(delta>0)
+        {
+            $(bookPreview).click();
+        }
+    });
+
+    var scrolled=false;
+    $(".content-library").bind('touchstart', function (e){
+        ts = e.originalEvent.touches[0].clientY;
+    });
+
+    $(".content-library").bind('touchend', function (e){
+        var scrollPos=$(".content-library").scrollTop();
+        var te = e.originalEvent.changedTouches[0].clientY;
+        if(ts < te-1 && scrollPos==0 && !scrolled){
+           $(goToTop).click();
+        }
+        else{
+            scrolled=true;
+        }
+        if(scrollPos==0)
+        {
+            scrolled=false;
+        }
+    });
+
+   
