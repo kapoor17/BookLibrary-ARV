@@ -71,7 +71,7 @@
                 const targetChapter = bookChapters[index];
 
                 moveChapters(chapterContainer, currentChapter, targetChapter);
-                window.setTimeout(()=>{$(".chapter-content").click()},1000);
+                window.setTimeout(()=>{$(targetChapter).find(".chapter-content").click()},1000);
 
             }
         })
