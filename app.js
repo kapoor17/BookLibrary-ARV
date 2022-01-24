@@ -161,8 +161,10 @@
     }
 
     var focusState=0;
-    $(".chapter-content:not(.footnote)").on("click",function(){
-        if(focusState==0)
+    var changeFocus=1;
+    const focusSlide=()=>{
+        if(changeFocus==1){
+            if(focusState==0)
         {
             focusState=1;
             $(".chapter-content").addClass("rescale");
@@ -174,9 +176,23 @@
         $(".chapter-content").removeClass("rescale");
         $(".header").removeClass('slide-up');
         $(".footer").removeClass('slide-down');
+        }
+    }
 
+    $(".chapter-content:not(.footnote)").on("click",function(){
+        changeFocus=1;
+        if($(".foot-note").hasClass("slide-down")){
+            focusSlide();
+            return;
+        }
+        $(".close-footnote").click();
     });
-    $(".footnote").on("click",function(){
+    $(".close-footnote").on("click",function(){
+        $(".foot-note").addClass("slide-down");
+    });
+    $(".footnote").on("click",function(event){
+        event.stopPropagation();
+        $(".foot-note").removeClass("slide-down");
         
     })
     const updateHeaderTitle=(targetTitle)=>{

@@ -288,9 +288,28 @@ img {
   align-items: center;
   color:whitesmoke;
 }
-.foot-note {
-  overflow: scroll;
+.foot-note{
   padding: 1em;
+  background-color: whitesmoke;
+  position:absolute;
+  box-shadow: 0px 0px 20px black;
+  transition: all 0.75s ease;
+  bottom:0px;
+}
+.foot-note-header{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+  font-size: 22px;
+  font-weight: bold;
+}
+.foot-note-content{
+  margin-top: 20px;
+  overflow: scroll;
+  max-height: 30vh;
+  min-height: 20vh;
 }
 .book-content {
   height: 100vh;
