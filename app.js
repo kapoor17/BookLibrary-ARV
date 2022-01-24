@@ -49,35 +49,6 @@
         bookCover.focus();
     })
     
-    bookContent.forEach((content,index)=>{
-
-        content.addEventListener("click",()=>{
-            
-            if(content.classList.contains("with-preview")){
-                
-                
-                const currentNav= contentlibrary.querySelector(".current-chapter")
-                if(currentNav)
-                    currentNav.classList.remove("current-chapter");
-                
-                const chapterTitle=content.querySelector(".accordion-header p");
-                updateHeaderTitle(chapterTitle);
-                
-                content.classList.add("current-chapter");
-
-
-                mainBook.classList.remove("slide-main-book-out");
-                mainBook.classList.add("slide-main-book-in");
-
-                const currentChapter =  chapterContainer.querySelector(".current-chapter");
-                const targetChapter = bookChapters[index];
-
-                moveChapters(chapterContainer, currentChapter, targetChapter);
-                window.setTimeout(()=>{$(targetChapter).find(".chapter-content").click()},1000);
-
-            }
-        })
-    })
     
     returnButton.addEventListener("click",()=>{
         mainBook.classList.add("slide-main-book-out");
@@ -85,69 +56,16 @@
     }) 
 
 
-    chapterDown.addEventListener("click",()=>{
-        const currentChapter=chapterContainer.querySelector(".current-chapter");
-        const nextChapter=currentChapter.nextElementSibling;
-
-        const currentNav= contentlibrary.querySelector(".current-chapter");
-        var nextNav=currentNav.nextElementSibling;
-
-        if(!nextNav){
-            var nextNavContainer=currentNav.closest("div.with-sub-chapters");
-            nextNav=nextNavContainer.nextElementSibling;
-        }
-
-        if(nextNav.classList.contains("with-sub-chapters")){
-            var nextNavContainer=nextNav.querySelector(".inner-accordion");
-            
-            nextNav=nextNavContainer.firstElementChild;
-        }
-
-        moveChapters(chapterContainer,currentChapter,nextChapter);
-        updateDots(currentNav,nextNav);
-        
-    })
-
-    chapterUp.addEventListener("click",()=>{
-        const currentChapter=chapterContainer.querySelector(".current-chapter");
-        const prevChapter=currentChapter.previousElementSibling;
-
-        const currentNav= contentlibrary.querySelector(".current-chapter");
-        var nextNav=currentNav.previousElementSibling;
-
-        if(!nextNav){
-            var nextNavContainer=currentNav.closest("div.with-sub-chapters");
-            nextNav=nextNavContainer.previousElementSibling;
-        }
-
-        if(nextNav.classList.contains("with-sub-chapters")){
-            var nextNavContainer=nextNav.querySelector(".inner-accordion");
-            
-            nextNav=nextNavContainer.lastElementChild;
-        }
-
-        moveChapters(chapterContainer,currentChapter,prevChapter);
-        updateDots(currentNav,nextNav);
-
-        
-    })
-
     footnote.addEventListener("click",()=>{
         footer.classList.add("open");
     })
 
    
     
-
-//functinons
-    const setBookPosition=(bookChapters,index)=>{
-        bookChapters.style.top=100*index+"vh"; 
-    };
-
-    bookChapters.forEach(setBookPosition);
-
+    //functinons
+    
     const moveChapters=(chapterContainer,currentChapter,targetChapter)=>{
-        chapterContainer.style.transform="translateY(-"+targetChapter.style.top+")";
+        chapterContainer.style.transform="translateX(-"+targetChapter.offsetRight+")";
         currentChapter.classList.remove("current-chapter");
         targetChapter.classList.add("current-chapter");
     }
@@ -155,32 +73,32 @@
     const updateDots=(currentNav,targetNav)=>{
         const chapterTitle=targetNav.querySelector(".accordion-header p")
         updateHeaderTitle(chapterTitle);
-
+        
         if(currentNav)
-            currentNav.classList.remove("current-chapter");
+        currentNav.classList.remove("current-chapter");
         if(targetNav)
-            targetNav.classList.add("current-chapter")
+        targetNav.classList.add("current-chapter")
     }
-
+    
     var focusState=0;
     var changeFocus=1;
     const focusSlide=()=>{
         if(changeFocus==1){
             if(focusState==0)
-        {
-            focusState=1;
-            $(".chapter-content").addClass("rescale");
-            $(".header").addClass('slide-up');
-            $(".footer").addClass('slide-down');
-            return;
-        }
-        focusState=0;
-        $(".chapter-content").removeClass("rescale");
-        $(".header").removeClass('slide-up');
-        $(".footer").removeClass('slide-down');
+            {
+                focusState=1;
+                $(".chapter-content").addClass("rescale");
+                $(".header").addClass('slide-up');
+                $(".footer").addClass('slide-down');
+                return;
+            }
+            focusState=0;
+            $(".chapter-content").removeClass("rescale");
+            $(".header").removeClass('slide-up');
+            $(".footer").removeClass('slide-down');
         }
     }
-
+    
     $(".chapter-content:not(.footnote)").on("click",function(){
         changeFocus=1;
         if($(".foot-note").hasClass("slide-down")){
@@ -195,54 +113,113 @@
     $(".footnote").on("click",function(event){
         event.stopPropagation();
         $(".foot-note").removeClass("slide-down");
-
+        
     })
     const updateHeaderTitle=(targetTitle)=>{
         headerTitle.innerHTML=targetTitle.innerHTML;
     }
     // $("#main-container").on("scroll",function(event){
-    //     event.preventDefault();
-    // })
+        //     event.preventDefault();
+        // })
+        
+        //scrolling effects
+        var ts;
+        $(".book-cover").bind('touchstart', function (e){
+            ts = e.originalEvent.touches[0].clientY;
+        });
+        
+        $(".book-cover").bind('touchend', function (e){
+            var te = e.originalEvent.changedTouches[0].clientY;
+            if(ts > te+5){
+                $(bookPreview).click();
+            }
+        });
+        
+        $(".book-cover").on("wheel",function(e){
+            var delta = e.originalEvent.deltaY;
+            if(delta>0)
+            {
+                $(bookPreview).click();
+            }
+        });
+        
+        var scrolled=false;
+        $(".content-library").bind('touchstart', function (e){
+            ts = e.originalEvent.touches[0].clientY;
+        });
+        
+        $(".content-library").bind('touchend', function (e){
+            var scrollPos=$(".content-library").scrollTop();
+            var te = e.originalEvent.changedTouches[0].clientY;
+            if(ts < te-1 && scrollPos==0 && !scrolled){
+                $(goToTop).click();
+            }
+            else{
+                scrolled=true;
+            }
+            if(scrollPos==0)
+            {
+                scrolled=false;
+            }
+        });
+        
+        var chapterId=1;
+        var currentChapter;
+        var pageId=1;
+        var chapterWidth=$(".chapters").width();
+        var pagesCount=$(".chapters").length;    
+        var chaptersCount=$(".chapter-cover").length;    
+        var currentBookMark;
+        $(".chapter-bookmark").on("click",function(){
+            chapterId=parseInt($(this).attr("data-chapterId"));
+            currentChapter=$(".chapter-cover#ch"+chapterId);
+            updateChapterBookmark();
+            pageId=parseInt($(currentChapter).attr("data-pageNo"));
+            movePage(pageId);
+            mainBook.classList.remove("slide-main-book-out");
+            mainBook.classList.add("slide-main-book-in");
+            setTimeout(()=>{$(".chapter-content").click();},900)
+        })
 
-    //scrolling effects
-    var ts;
-    $(".book-cover").bind('touchstart', function (e){
-        ts = e.originalEvent.touches[0].clientY;
-    });
+        $(".chapter-controls").on("click",function(){
+            var factor=parseInt($(this).attr("data-direction"));
+            if( chapterId+factor==0 || chapterId+factor>chaptersCount)
+                return;
+            chapterId+=factor;
+            currentChapter=$(".chapter-cover#ch"+chapterId);
+            updateChapterBookmark();
+            var multiplier=parseInt($(currentChapter).attr("data-pageNo"));
+            pageId=multiplier;
+            movePage(pageId);
 
-    $(".book-cover").bind('touchend', function (e){
-        var te = e.originalEvent.changedTouches[0].clientY;
-        if(ts > te+5){
-            $(bookPreview).click();
+        });
+
+        function movePage(pageTarget){
+            $(".book-content").css("transform","translateX(-"+(pageTarget-1)*chapterWidth+"px)")
         }
-    });
-    
-    $(".book-cover").on("wheel",function(e){
-        var delta = e.originalEvent.deltaY;
-        if(delta>0)
+        $(".page-controls").on("click",function(){
+            var factor=parseInt($(this).attr("data-direction"));
+            if(pageId+factor<1 || pageId+factor>pagesCount)
+                return;
+            pageId+=factor;
+            var currentPage=$(".chapters[data-pageNo='"+pageId+"']");
+            if(currentPage.hasClass("chapter-cover"))
+            {
+                currentChapter=currentPage;
+                chapterId=parseInt($(currentChapter).attr("id").replace("ch",""));          
+                updateChapterBookmark();
+            }
+            movePage(pageId);
+        })
+
+        function updateChapterBookmark()
         {
-            $(bookPreview).click();
-        }
-    });
+            currentBookMark=$(".chapter-bookmark.chId-"+chapterId);
+            $(".chapter-bookmark.current-chapter").removeClass("current-chapter");
+            $(".accordion-collapse.show").removeClass("show");
+            $(currentBookMark).addClass("current-chapter");
+            if($(currentBookMark).parent().hasClass("inner-accordion")){
+                $(currentBookMark).parents(".accordion-collapse").addClass("show");
 
-    var scrolled=false;
-    $(".content-library").bind('touchstart', function (e){
-        ts = e.originalEvent.touches[0].clientY;
-    });
-
-    $(".content-library").bind('touchend', function (e){
-        var scrollPos=$(".content-library").scrollTop();
-        var te = e.originalEvent.changedTouches[0].clientY;
-        if(ts < te-1 && scrollPos==0 && !scrolled){
-           $(goToTop).click();
+            }
         }
-        else{
-            scrolled=true;
-        }
-        if(scrollPos==0)
-        {
-            scrolled=false;
-        }
-    });
-
-   
