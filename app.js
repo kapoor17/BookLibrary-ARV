@@ -4,8 +4,9 @@
 
     const accordionCover=document.querySelector("#accordion-cover");
     const bookPreview=accordionCover.querySelector(".preview-button");
-    const contentlibrary=accordionCover.querySelector(".content-library");
+
     const goToTop=accordionCover.querySelector(".go-back");
+    const contentlibrary=accordionCover.querySelector(".content-library");
     const bookContent = accordionCover.querySelectorAll(".chapter-nav");
     
     //main-book objects
@@ -40,12 +41,30 @@
 
 
 //events
+    window.addEventListener("beforeunload",(e)=>{
+        e.preventDefault();
+        mainBook.classList.add("slide-main-book-out");
+        mainBook.classList.remove("slide-main-book-in");
+    })
+
     bookCover.addEventListener('touchstart', handleTouchStart, false);        
     bookCover.addEventListener('touchmove', handleTouchMove, false);
 
+    $(".book-cover").on("wheel",function(e){
+        var delta = e.originalEvent.deltaY;
+        if(delta>0)
+            bookPreview.click();
+    });
+
+    
     contentlibrary.addEventListener('touchstart', handleTouchStart, false);        
     contentlibrary.addEventListener('touchmove', handleTouchMove, false);
-
+    
+    $(".content-library").on("wheel",function(e){
+        var delta = e.originalEvent.deltaY;
+        if(delta<0)
+            goToTop.firstElementChild.click();
+    });
 
     bookPreview.addEventListener("click",()=>{
         accordionCover.classList.add("variable-height-class");
@@ -60,13 +79,13 @@
             accordionCover.classList.remove("variable-height-class");
         }, 300);
     })
+
+
     
     bookContent.forEach((content,index)=>{
         content.addEventListener("click",()=>{
-            
-            if(content.classList.contains("with-preview")){
-                
-                
+            if(content.classList.contains("with-preview")){               
+                location.hash="#content";
                 const currentNav= contentlibrary.querySelector(".current-chapter")
                 if(currentNav)
                     currentNav.classList.remove("current-chapter");
@@ -94,8 +113,47 @@
         mainBook.classList.remove("slide-main-book-in");
     }) 
 
+    window.onhashchange=()=>{
+        if(mainBook.classList.contains("slide-main-book-in")){
+            mainBook.classList.add("slide-main-book-out");
+            mainBook.classList.remove("slide-main-book-in");
+        }
+        else return;
+            
+    }
+
     pagesContainer.addEventListener('touchstart', handleTouchStart, false);        
     pagesContainer.addEventListener('touchmove', handleTouchMove, false);
+
+    $(pagesContainer).on("wheel",function(e){
+        var delta = e.originalEvent.deltaY;
+        if(delta>0){
+            mainBook.classList.add("reading");
+    
+            const currentPage=pagesContainer.querySelector(".current-page");
+            const nextPage=currentPage.nextElementSibling;
+
+            movePage(pagesContainer,currentPage,nextPage);
+        }
+    });
+
+    $(pagesContainer).on("wheel",function(e){
+        var delta = e.originalEvent.deltaY;
+        if(delta<0){
+            mainBook.classList.add("reading");
+
+            const currentPage=pagesContainer.querySelector(".current-page");
+            const prevPage=currentPage.previousElementSibling;
+
+             movePage(pagesContainer,currentPage,prevPage);
+        
+
+        }
+    });
+
+    pagesContainer.addEventListener("click",()=>{
+        mainBook.classList.remove("reading");
+    })
 
     chapterDown.addEventListener("click",()=>{
         const currentChapter=chapterContainer.querySelector(".current-chapter");
@@ -209,6 +267,8 @@
                 /*pageCarousel*/
                 if(this.classList.contains("page-carousel-container")){
 
+                    mainBook.classList.add("reading");
+
                     const currentPage=pagesContainer.querySelector(".current-page");
                     const prevPage=currentPage.previousElementSibling;
 
@@ -218,9 +278,6 @@
         } else {
             if ( yDiff > 0 ) {
                 /* down swipe */ 
-                if(this.classList.contains("page-carousel-container"))
-                    mainBook.classList.remove("reading");
-
 
                 /*bookCover*/
                 if(this.classList.contains("book-cover")){
@@ -231,8 +288,6 @@
                 }
             } else { 
                 /* up swipe */
-                if(this.classList.contains("page-carousel-container"))
-                    mainBook.classList.add("reading");
 
                 /*bookCover*/
                 if(this.classList.contains("content-library")){
@@ -247,10 +302,6 @@
         xDown = null;
         yDown = null;                                             
       };
-
-
-
-
 
 
     const moveChapters=(chapterContainer,currentChapter,targetChapter)=>{
