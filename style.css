@@ -10,7 +10,7 @@
   --accent-color-lighter: #b4dbffba;
 
   --height-big: 100vh;
-  --height-small: 100vh;
+  --height-small: 100%;
   --height-small-forbig: 95vh;
   --header-heights: 2.5rem;
   --border-radius: 22.5px;

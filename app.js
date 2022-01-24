@@ -218,7 +218,9 @@
         } else {
             if ( yDiff > 0 ) {
                 /* down swipe */ 
-                mainBook.classList.remove("reading");
+                if(this.classList.contains("page-carousel-container"))
+                    mainBook.classList.remove("reading");
+
 
                 /*bookCover*/
                 if(this.classList.contains("book-cover")){
@@ -229,7 +231,8 @@
                 }
             } else { 
                 /* up swipe */
-                mainBook.classList.add("reading");
+                if(this.classList.contains("page-carousel-container"))
+                    mainBook.classList.add("reading");
 
                 /*bookCover*/
                 if(this.classList.contains("content-library")){
