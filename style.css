@@ -343,6 +343,9 @@ img {
 
   overflow: scroll;
 }
+.chapters-with-slide {
+  overflow: hidden;
+}
 .reading .containers .header {
   top: -2.5rem;
 }
