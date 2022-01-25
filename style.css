@@ -32,6 +32,7 @@
   font-family: accordion-text-font;
   src: url(./Assets/Helvetica\ Neue\ LT\ 43\ Light\ Extended.ttf);
 }
+
 ::-webkit-scrollbar {
   width: 0px;
 }
@@ -44,6 +45,7 @@ body,
 
   overflow: hidden;
 }
+
 body {
   display: flex;
   justify-content: center;
@@ -98,31 +100,31 @@ h4,
 img {
   max-width: 100%;
 }
-#accordion-cover,
-.containers,
-.book-cover {
-  height: 100%;
 
-  transition: all 0.75s ease-in;
+#accordion-cover,
+#main-book,
+.containers,
+.book-cover,
+.book-content {
+  height: 100%;
 }
 #accordion-cover {
   font-family: accordion-text-font;
 }
+#main-book {
+  font-family: accordion-tex-font;
+}
+
 .book-cover {
-  background-color: var(--accent-color-light);
   background: url(./Assets/book-cover.jpg);
   background-size: cover;
   background-repeat: no-repeat;
-
-  color: var(--accent-color-lighter);
+  background-color: var(--accent-color-light);
 
   display: flex;
   flex-direction: column;
   justify-content: space-around;
   align-items: center;
-}
-.variable-height-class {
-  transform: translateY(-100%);
 }
 .preview-button {
   height: 15%;
@@ -136,31 +138,32 @@ img {
 
   cursor: pointer;
 }
-.content-library,
-.accordion-item,
-.accordion-item .accordion-preview,
-.accordion-item .accordion-preview:not(.collapsed),
-.accordion-item .accordion-button,
-.accordion-item .accordion-body {
-  background-color: var(--white);
+.variable-height-class {
+  transform: translateY(-100%);
 }
+
 .content-library {
   height: 100%;
   width: 100%;
 
   position: relative;
-  transition: height 0.75s ease-in;
 
   overflow: scroll;
 }
 .go-back i {
   transform: rotate(0deg);
   transition: all 0.5s ease;
+
+  cursor: pointer;
 }
 .fixed i {
   transform: rotate(-180deg);
-
-  cursor: pointer;
+}
+.content-library,
+.accordion-item,
+.accordion-item .accordion-preview,
+.accordion-item .accordion-button {
+  background-color: var(--white);
 }
 .accordion:not(.inner-accordion) {
   padding-top: var(--header-heights);
@@ -174,23 +177,22 @@ img {
 }
 .accordion-item .accordion-preview,
 .accordion-item .accordion-button {
-  font-size: 0.75em;
+  font-size: 1rem;
   padding: 1em 1.75em;
 }
 .accordion-item .accordion-preview {
   position: relative;
-  display: flex;
-  align-items: center;
+
   width: 100%;
   color: #212529;
-  text-align: left;
+
   border: 0;
   border-radius: 0;
   cursor: pointer;
 }
 .accordion-preview:not(.collapsed),
 .accordion-button:not(.collapsed) {
-  box-shadow: inset 0 -1px 0 rgba(0, 0, 0, 0.125);
+  box-shadow: inset 0 -1px 5px rgba(0, 0, 0, 0.125);
 }
 .current-chapter .accordion-preview {
   color: var(--accent-color);
@@ -210,11 +212,10 @@ img {
   max-width: 500px;
 }
 .accordion-item .accordion-body .chapter-mini-intro {
-  font-size: 0.95em;
+  font-size: 0.85rem;
 }
-
 .accordion-item .accordion-body .payment-prompt {
-  font-size: 1em;
+  font-size: 1rem;
   text-align: center;
   margin: 0.5em 0em;
 }
@@ -249,6 +250,7 @@ img {
   transform: rotate(-45deg);
   overflow: hidden;
 }
+
 #main-book {
   font-family: book-text-font;
   z-index: 13;
@@ -256,17 +258,15 @@ img {
   width: 100%;
   position: absolute;
   top: 0;
+  left: 100%;
 
   transition: all 0.5s ease-in;
 }
 .book-content {
   transition: all 0.75s ease;
 }
-.slide-main-book-out {
-  left: 100%;
-}
 .slide-main-book-in {
-  left: 0;
+  left: 0 !important;
 }
 .header,
 .footer,
@@ -278,59 +278,46 @@ img {
   justify-content: center;
   align-items: center;
 }
-.go-back {
-  position: absolute;
-}
 .header,
-.go-back {
+.go-back,
+.footer .controls {
   padding: 10px;
   height: var(--header-heights);
   background-color: var(--accent-color-light);
+}
+.header,
+.go-back {
   border-radius: 0 0 var(--border-radius) var(--border-radius);
   top: 0;
 }
-.header,
-.footer,
-.containers .chapters .pages {
-  transition: all 0.5s ease;
+.go-back {
+  top: var(--height-big);
 }
-.header .chapter-title,
-.header .return {
+.header > * {
   margin-right: auto;
-}
-.header .return {
-  cursor: pointer;
 }
 .header .return,
 .go-back,
-.footer .controls > * {
+.footer .controls .arrows i,
+.footer .controls .close-footnote i {
   padding: 0;
   font-size: calc(var(--header-heights) - 1rem);
+  cursor: pointer;
 }
 .footer {
   flex-direction: column;
   top: calc(var(--height-big) - var(--header-heights));
   background-color: var(--white);
 }
+.footer .controls {
+  width: 100%;
+  border-radius: var(--border-radius) var(--border-radius) 0 0;
+}
 .footer.open {
   top: calc(var(--height-big) / 2);
 }
-.go-back {
-  top: var(--height-big);
-}
-.footer .controls {
-  height: var(--header-heights);
-
-  background-color: var(--accent-color-light);
-
-  border-radius: var(--border-radius) var(--border-radius) 0 0;
-  width: 100%;
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-}
-.controls .arrows {
-  width: 100%;
+.controls .arrows,
+.controls .close-footnote {
   display: flex;
   justify-content: space-around;
   align-items: center;

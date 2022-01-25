@@ -95,7 +95,6 @@
                 content.classList.add("current-chapter");
 
 
-                mainBook.classList.remove("slide-main-book-out");
                 mainBook.classList.add("slide-main-book-in");
 
                 const currentChapter =  chapterContainer.querySelector(".current-chapter");
@@ -108,7 +107,6 @@
     })
     
     returnButton.addEventListener("click",()=>{
-        mainBook.classList.add("slide-main-book-out");
         mainBook.classList.remove("slide-main-book-in");
     }) 
 
