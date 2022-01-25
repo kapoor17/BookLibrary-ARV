@@ -127,14 +127,14 @@
         $(".book-cover").bind('touchstart', function (e){
             ts = e.originalEvent.touches[0].clientY;
         });
-        
+    
         $(".book-cover").bind('touchend', function (e){
             var te = e.originalEvent.changedTouches[0].clientY;
             if(ts > te+5){
                 $(bookPreview).click();
             }
         });
-        
+    
         $(".book-cover").on("wheel",function(e){
             var delta = e.originalEvent.deltaY;
             if(delta>0)
@@ -142,16 +142,17 @@
                 $(bookPreview).click();
             }
         });
-        
+    
         var scrolled=false;
+        var oldScroll=0;
         $(".content-library").bind('touchstart', function (e){
             ts = e.originalEvent.touches[0].clientY;
         });
-        
+    
         $(".content-library").bind('touchend', function (e){
             var scrollPos=$(".content-library").scrollTop();
             var te = e.originalEvent.changedTouches[0].clientY;
-            if(ts < te-1 && scrollPos==0 && !scrolled){
+            if(ts < te && scrollPos==0 && !scrolled){
                 $(goToTop).click();
             }
             else{
@@ -161,14 +162,13 @@
             {
                 scrolled=false;
             }
-        });
+        });                                              
         
         var chapterId=1;
         var currentChapter;
         var pageId=1;
         var chapterWidth=$(".chapters").width();
-        var pagesCount=$(".chapters").length;    
-        var chaptersCount=$(".chapter-cover").length;    
+        var chapterCount=$(".chapters").length;        
         var currentBookMark;
         $(".chapter-bookmark").on("click",function(){
             chapterId=parseInt($(this).attr("data-chapterId"));
@@ -183,35 +183,18 @@
 
         $(".chapter-controls").on("click",function(){
             var factor=parseInt($(this).attr("data-direction"));
-            if( chapterId+factor==0 || chapterId+factor>chaptersCount)
+            if( chapterId+factor==0 || chapterId+factor>chapterCount)
                 return;
             chapterId+=factor;
             currentChapter=$(".chapter-cover#ch"+chapterId);
             updateChapterBookmark();
-            var multiplier=parseInt($(currentChapter).attr("data-pageNo"));
-            pageId=multiplier;
-            movePage(pageId);
+            movePage(chapterId);
 
         });
 
         function movePage(pageTarget){
-            $(".book-content").css("transform","translateX(-"+(pageTarget-1)*chapterWidth+"px)")
+            $(".book-content").css("transform","translateY(-"+(pageTarget-1)*100+"vh)")
         }
-        $(".page-controls").on("click",function(){
-            var factor=parseInt($(this).attr("data-direction"));
-            if(pageId+factor<1 || pageId+factor>pagesCount)
-                return;
-            pageId+=factor;
-            var currentPage=$(".chapters[data-pageNo='"+pageId+"']");
-            if(currentPage.hasClass("chapter-cover"))
-            {
-                currentChapter=currentPage;
-                chapterId=parseInt($(currentChapter).attr("id").replace("ch",""));          
-                updateChapterBookmark();
-            }
-            movePage(pageId);
-        })
-
         function updateChapterBookmark()
         {
             currentBookMark=$(".chapter-bookmark.chId-"+chapterId);
