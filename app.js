@@ -206,3 +206,20 @@
 
             }
         }
+        var oldScroll=0;
+        $(".chapter-content").on("scroll",function(e){
+            if(!$(this).parent().attr("data-chapterNumber")==chapterId)
+                return;  
+            oldScroll=$(".book-content").scrollTop();
+        });
+        var wheelCheck=true;
+        $(".book-content").on("wheel",function(e){
+            if(!wheelCheck)
+                return;
+            var scrollPos=$('.book-content').scrollTop();
+            if(scrollPos > oldScroll)
+            {
+                e.preventDefault();
+
+            }
+        })
