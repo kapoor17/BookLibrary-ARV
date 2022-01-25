@@ -3,11 +3,11 @@
     //accordion-wrapper objects
 
     const accordionCover=document.querySelector("#accordion-cover");
-    const bookPreview=accordionCover.querySelector(".preview-button");
+    const previewButton=accordionCover.querySelector(".preview-button");
 
     const goToTop=accordionCover.querySelector(".go-back");
     const contentlibrary=accordionCover.querySelector(".content-library");
-    const bookContent = accordionCover.querySelectorAll(".chapter-nav");
+    const chapterNav = accordionCover.querySelectorAll(".chapter-nav");
     
     //main-book objects
 
@@ -17,13 +17,9 @@
     const returnButton=mainBook.querySelector(".return");
     const headerTitle=mainBook.querySelector(".chapter-title");
     
-    const chapterContainer=mainBook.querySelector(".book-content");
-    const bookChapters = Array.from(chapterContainer.children);
+    const bookContent=mainBook.querySelector(".book-content");
+    const bookChapters = Array.from(bookContent.children);
 
-    const pagesContainer=mainBook.querySelector(".page-carousel-container");
-    const bookPages=Array.from(pagesContainer.children);
-
-    const bookChaptersWP = mainBook.querySelectorAll(".chapters.with-preview");
     const footnote = mainBook.querySelector(".footnote")
     
     const footer = mainBook.querySelector(".footer");
@@ -41,32 +37,25 @@
 
 
 //events
-    window.addEventListener("beforeunload",(e)=>{
-        e.preventDefault();
-        mainBook.classList.add("slide-main-book-out");
-        mainBook.classList.remove("slide-main-book-in");
-    })
-
     bookCover.addEventListener('touchstart', handleTouchStart, false);        
     bookCover.addEventListener('touchmove', handleTouchMove, false);
 
     $(".book-cover").on("wheel",function(e){
         var delta = e.originalEvent.deltaY;
         if(delta>0)
-            bookPreview.click();
+            previewButton.click();
     });
 
-    
     contentlibrary.addEventListener('touchstart', handleTouchStart, false);        
     contentlibrary.addEventListener('touchmove', handleTouchMove, false);
     
-    $(".content-library").on("wheel",function(e){
-        var delta = e.originalEvent.deltaY;
-        if(delta<0)
-            goToTop.firstElementChild.click();
-    });
+    // $(".content-library").on("wheel",function(e){
+    //     var delta = e.originalEvent.deltaY;
+    //     if(delta<0)
+    //         goToTop.firstElementChild.click();
+    // });
 
-    bookPreview.addEventListener("click",()=>{
+    previewButton.addEventListener("click",()=>{
         accordionCover.classList.add("variable-height-class");
         setTimeout(() => {
             goToTop.classList.add("fixed");
@@ -82,7 +71,7 @@
 
 
     
-    bookContent.forEach((content,index)=>{
+    chapterNav.forEach((content,index)=>{
         content.addEventListener("click",()=>{
             if(content.classList.contains("with-preview")){               
                 const currentNav= contentlibrary.querySelector(".current-chapter")
@@ -97,10 +86,10 @@
 
                 mainBook.classList.add("slide-main-book-in");
 
-                const currentChapter =  chapterContainer.querySelector(".current-chapter");
+                const currentChapter =  bookContent.querySelector(".current-chapter");
                 const targetChapter = bookChapters[index];
 
-                moveChapters(chapterContainer, currentChapter, targetChapter);
+                moveChapters(bookContent, currentChapter, targetChapter);
 
             }
         })
@@ -110,42 +99,8 @@
         mainBook.classList.remove("slide-main-book-in");
     }) 
 
-
-    pagesContainer.addEventListener('touchstart', handleTouchStart, false);        
-    pagesContainer.addEventListener('touchmove', handleTouchMove, false);
-
-    $(pagesContainer).on("wheel",function(e){
-        var delta = e.originalEvent.deltaY;
-        if(delta>0){
-            mainBook.classList.add("reading");
-    
-            const currentPage=pagesContainer.querySelector(".current-page");
-            const nextPage=currentPage.nextElementSibling;
-
-            movePage(pagesContainer,currentPage,nextPage);
-        }
-    });
-
-    $(pagesContainer).on("wheel",function(e){
-        var delta = e.originalEvent.deltaY;
-        if(delta<0){
-            mainBook.classList.add("reading");
-
-            const currentPage=pagesContainer.querySelector(".current-page");
-            const prevPage=currentPage.previousElementSibling;
-
-             movePage(pagesContainer,currentPage,prevPage);
-        
-
-        }
-    });
-
-    pagesContainer.addEventListener("click",()=>{
-        mainBook.classList.remove("reading");
-    })
-
     chapterDown.addEventListener("click",()=>{
-        const currentChapter=chapterContainer.querySelector(".current-chapter");
+        const currentChapter=bookContent.querySelector(".current-chapter");
         const nextChapter=currentChapter.nextElementSibling;
 
         const currentNav= contentlibrary.querySelector(".current-chapter");
@@ -164,13 +119,13 @@
             nextNavContainer.closest("div.accordion-collapse").classList.add("show")
         }
 
-        moveChapters(chapterContainer,currentChapter,nextChapter);
+        moveChapters(bookContent,currentChapter,nextChapter);
         updateDots(currentNav,nextNav);
         
     })
 
     chapterUp.addEventListener("click",()=>{
-        const currentChapter=chapterContainer.querySelector(".current-chapter");
+        const currentChapter=bookContent.querySelector(".current-chapter");
         const prevChapter=currentChapter.previousElementSibling;
 
         const currentNav= contentlibrary.querySelector(".current-chapter");
@@ -190,20 +145,20 @@
             nextNavContainer.closest("div.accordion-collapse").classList.add("show")
         }
 
-        moveChapters(chapterContainer,currentChapter,prevChapter);
+        moveChapters(bookContent,currentChapter,prevChapter);
         updateDots(currentNav,nextNav);
 
         
     })
 
     footnote.addEventListener("click",()=>{
-        footer.classList.add("open");
+        mainBook.classList.add("footnote-open");
         arrows.classList.add("d-none");
         closeFootnote.classList.remove("d-none");
     })
 
     closeFootnote.addEventListener("click",()=>{
-        footer.classList.remove("open");
+        mainBook.classList.remove("footnote-open");
         arrows.classList.remove("d-none");
         closeFootnote.classList.add("d-none");
     })
@@ -235,56 +190,20 @@
         if ( Math.abs( xDiff ) > Math.abs( yDiff ) ) {/*most significant*/
             if ( xDiff > 0 ) {
                 /* right swipe */
-
-                
-
-                /*pageCarousel*/
-                if(this.classList.contains("page-carousel-container")){
-
-                    mainBook.classList.add("reading");
-    
-                    const currentPage=pagesContainer.querySelector(".current-page");
-                    const nextPage=currentPage.nextElementSibling;
-    
-                    movePage(pagesContainer,currentPage,nextPage);
-                }
             } else {
                 /* left swipe */
-
-                
-                                
-                /*pageCarousel*/
-                if(this.classList.contains("page-carousel-container")){
-
-                    mainBook.classList.add("reading");
-
-                    const currentPage=pagesContainer.querySelector(".current-page");
-                    const prevPage=currentPage.previousElementSibling;
-
-                    movePage(pagesContainer,currentPage,prevPage);
-                }
             }                       
         } else {
             if ( yDiff > 0 ) {
                 /* down swipe */ 
 
                 /*bookCover*/
-                if(this.classList.contains("book-cover")){
-                    accordionCover.classList.add("variable-height-class");
-                    setTimeout(() => {
-                        goToTop.classList.add("fixed");
-                    }, 750);
-                }
+                if(this.classList.contains("book-cover"))
+                    previewButton.click();
             } else { 
                 /* up swipe */
 
                 /*bookCover*/
-                if(this.classList.contains("content-library")){
-                    goToTop.classList.remove("fixed");
-                    setTimeout(() => {
-                        accordionCover.classList.remove("variable-height-class");
-                    }, 300);
-                }
             }                                                                 
         }
         /* reset values */
@@ -293,36 +212,18 @@
       };
 
 
-    const moveChapters=(chapterContainer,currentChapter,targetChapter)=>{
+    const moveChapters=(bookContent,currentChapter,targetChapter)=>{
         targetChapter.scrollTo(0,0);
-        chapterContainer.style.transform="translateY(-"+targetChapter.style.top+")";
+        bookContent.style.transform="translateY(-"+targetChapter.style.top+")";
         currentChapter.classList.remove("current-chapter");
         targetChapter.classList.add("current-chapter");
     }
 
-    const movePage=(pagesContainer,currentPage,targetPage)=>{
-        pagesContainer.style.transform="translateX(-"+targetPage.style.left+")";
-        currentPage.classList.remove("current-page");
-        targetPage.classList.add("current-page");
-    }
-
     const setBookPosition=(bookChapters,index)=>{
-        bookChapters.style.top=100*index+"vh"; 
+        bookChapters.style.top=100*index+"%"; 
     };
 
     bookChapters.forEach(setBookPosition);
-
-    const findPages=(bookChapters)=>{
-        const bookPages = bookChapters.querySelectorAll(".pages");
-        bookPages.forEach(setPagePosition);
-    }
-    
-    const setPagePosition=(bookpage,index)=>{
-        bookpage.style.left=100*index+"%"; 
-    }
-
-    bookChapters.forEach(findPages);
-
 
     
     const updateDots=(currentNav,targetNav)=>{

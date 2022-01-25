@@ -12,8 +12,10 @@
   --height-big: 100vh;
   --height-small: 100%;
   --height-small-forbig: 95vh;
-  --header-heights: 2.5rem;
-  --border-radius: 22.5px;
+  --header-heights: 2.25rem;
+
+  --anim-slow: 0.75s;
+  --anim-fast: 0.5s;
 }
 
 @font-face {
@@ -110,6 +112,7 @@ img {
 }
 #accordion-cover {
   font-family: accordion-text-font;
+  transition: all var(--anim-slow) ease;
 }
 #main-book {
   font-family: accordion-tex-font;
@@ -197,7 +200,7 @@ img {
 .current-chapter .accordion-preview {
   color: var(--accent-color);
   background-color: var(--accent-color-lighter);
-  border-radius: 10px;
+  /* border-radius: 10px; */
 }
 .accordion-item .accordion-body {
   display: flex;
@@ -205,6 +208,7 @@ img {
   justify-content: center;
   align-items: flex-start;
   padding: 1em 1.5em;
+  padding-right: 0;
   padding-top: 0;
 }
 .accordion-item .logged-out {
@@ -221,7 +225,7 @@ img {
 }
 .accordion-item .accordion-body .payment-gateway {
   border: 1px solid var(--black);
-  border-radius: 5px;
+  /* border-radius: 5px; */
   width: 95%;
   height: 150px;
   align-self: center;
@@ -232,7 +236,7 @@ img {
   background: none;
   background-color: var(--accent-color-lighter);
   border: 1px solid var(--black);
-  border-radius: 3px;
+  /* border-radius: 3px; */
   align-self: center;
 }
 .corner-ribbon {
@@ -260,10 +264,7 @@ img {
   top: 0;
   left: 100%;
 
-  transition: all 0.5s ease-in;
-}
-.book-content {
-  transition: all 0.75s ease;
+  transition: all var(--anim-slow) ease;
 }
 .slide-main-book-in {
   left: 0 !important;
@@ -281,13 +282,13 @@ img {
 .header,
 .go-back,
 .footer .controls {
-  padding: 10px;
+  padding: 8px;
   height: var(--header-heights);
   background-color: var(--accent-color-light);
 }
 .header,
 .go-back {
-  border-radius: 0 0 var(--border-radius) var(--border-radius);
+  /* border-radius: 0 0 var(--border-radius) var(--border-radius); */
   top: 0;
 }
 .go-back {
@@ -308,13 +309,27 @@ img {
   flex-direction: column;
   top: calc(var(--height-big) - var(--header-heights));
   background-color: var(--white);
+
+  transition: all var(--anim-slow) ease;
 }
 .footer .controls {
   width: 100%;
-  border-radius: var(--border-radius) var(--border-radius) 0 0;
 }
-.footer.open {
+.footnote-open .footer {
   top: calc(var(--height-big) / 2);
+}
+.footnote-open .book-content::after {
+  content: "";
+  height: 100%;
+  width: 100%;
+  background-color: black;
+  opacity: 0.2;
+
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
 }
 .controls .arrows,
 .controls .close-footnote {
@@ -330,16 +345,15 @@ img {
 }
 .chapters {
   width: 100%;
-  min-height: 100vh;
+  min-height: 100%;
 
   position: absolute;
   top: 0;
   bottom: 0;
 
+  padding: calc(var(--header-heights) + 0.5rem) 1.25rem;
+
   overflow: scroll;
-}
-.chapters-with-slide {
-  overflow: hidden;
 }
 .reading .containers .header {
   top: -2.5rem;
@@ -347,34 +361,14 @@ img {
 .reading .containers .footer {
   top: var(--height-big);
 }
-.page-carousel-container {
-  height: 100%;
-  position: relative;
-  transition: transform 0.75s ease;
-}
-.chapters .pages {
-  height: inherit;
-  width: 100%;
-  position: absolute;
-  top: 0;
-  bottom: 0;
-
-  left: 0;
-  right: 0;
-  padding: calc(var(--header-heights) + 0.5rem) 1.25rem;
-
-  background-color: var(--white);
-}
-
+/* 
 .reading .containers .chapters .pages {
   padding: 1.25rem;
-}
+} */
 
 .chapters,
 .foot-notes {
-  /* padding: calc(var(--header-heights) + 0.5rem) 1.25rem; */
   text-align: justify;
-  /* word-spacing: 5px; */
   background-color: var(--white);
   line-height: 2rem;
 }
@@ -399,7 +393,7 @@ img {
     max-width: 800px;
     position: relative;
 
-    border-radius: 10px;
+    /* border-radius: 10px; */
 
     box-shadow: 0px 0px 30px rgba(0, 0, 0, 0.224);
   }
