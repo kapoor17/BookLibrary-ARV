@@ -294,7 +294,11 @@ img {
 .go-back {
   top: var(--height-big);
 }
-.header > * {
+.header {
+  transition: all var(--anim-slow) ease;
+}
+.header > *,
+.close-footnote > * {
   margin-right: auto;
 }
 .header .return,
@@ -306,8 +310,12 @@ img {
   cursor: pointer;
 }
 .footer {
+  height: calc(var(--height-big) / 2);
+
   flex-direction: column;
+  justify-content: space-between;
   top: calc(var(--height-big) - var(--header-heights));
+
   background-color: var(--white);
 
   transition: all var(--anim-slow) ease;
@@ -316,9 +324,9 @@ img {
   width: 100%;
 }
 .footnote-open .footer {
-  top: calc(var(--height-big) / 2);
+  top: calc(var(--height-big) / 2) !important;
 }
-.footnote-open .book-content::after {
+/* .footnote-open .book-content::after {
   content: "";
   height: 100%;
   width: 100%;
@@ -330,7 +338,7 @@ img {
   bottom: 0;
   left: 0;
   right: 0;
-}
+} */
 .controls .arrows,
 .controls .close-footnote {
   display: flex;
@@ -342,6 +350,7 @@ img {
 }
 .book-content {
   height: 100%;
+  transition: all var(--anim-slow) ease;
 }
 .chapters {
   width: 100%;
@@ -361,11 +370,6 @@ img {
 .reading .containers .footer {
   top: var(--height-big);
 }
-/* 
-.reading .containers .chapters .pages {
-  padding: 1.25rem;
-} */
-
 .chapters,
 .foot-notes {
   text-align: justify;
@@ -397,7 +401,10 @@ img {
 
     box-shadow: 0px 0px 30px rgba(0, 0, 0, 0.224);
   }
+
   .footer {
+    height: calc(var(--height-small-forbig) / 2);
+
     top: calc(var(--height-small-forbig) - var(--header-heights));
   }
   .footer.open {

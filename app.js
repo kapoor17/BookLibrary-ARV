@@ -151,6 +151,27 @@
         
     })
 
+    $(bookChapters).on("wheel",function(e){
+        var delta = e.originalEvent.deltaY;
+        if(delta>0){
+            mainBook.classList.add("reading");
+            if(mainBook.classList.contains("footnote-open")){
+                closeFootnote.click();
+            }
+        }
+    });
+
+    $(bookChapters).on("wheel",function(e){
+        var delta = e.originalEvent.deltaY;
+        if(delta<0)
+            mainBook.classList.remove("reading");
+    });
+
+    bookChapters.forEach(chapter=>{
+        chapter.addEventListener('touchstart', handleTouchStart, false);        
+        chapter.addEventListener('touchmove', handleTouchMove, false);
+    })
+
     footnote.addEventListener("click",()=>{
         mainBook.classList.add("footnote-open");
         arrows.classList.add("d-none");
@@ -200,10 +221,19 @@
                 /*bookCover*/
                 if(this.classList.contains("book-cover"))
                     previewButton.click();
+
+                if(this.classList.contains("chapters")){
+                    mainBook.classList.add("reading");
+                    if(mainBook.classList.contains("footnote-open")){
+                        closeFootnote.click();
+                    }
+                }
             } else { 
                 /* up swipe */
-
-                /*bookCover*/
+                if(this.classList.contains("chapters")){
+                    mainBook.classList.remove("reading");
+                }
+                
             }                                                                 
         }
         /* reset values */
@@ -240,24 +270,6 @@
         headerTitle.innerHTML=targetTitle.innerHTML;
     }
 
-    // const divideChapterText=(chapter,index)=>{
-    //     const parentHeight = chapter.getBoundingClientRect().height
-    //     const chapterHeight = chapter.firstElementChild.getBoundingClientRect().height;
-    //     const numberOfPages = Math.floor(chapterHeight/parentHeight)+1;
-
-    //     console.log(chapterHeight,parentHeight);
-
-    //     for(var i=1;i<numberOfPages;i++){
-    //         var newPage=document.createElement("p");
-    //         newPage.classList.add(i);
-    //         newPage.classList.add("pages");
-    //         chapter.appendChild(newPage);
-    //     }
-    //     console.log(chapter.children)
-    // }
-
-    // bookChapters.forEach(divideChapterText);
-
     const LogFunctions=()=>{
         if(loggedIn){
             //logIn Functions
@@ -274,3 +286,8 @@
     }
 
     LogFunctions();
+
+    window.addEventListener("popstate", function(){
+        alert("going back")
+        returnButton.click();
+    });
