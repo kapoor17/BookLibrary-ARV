@@ -4869,7 +4869,7 @@ fieldset:disabled .btn {
   font-size: 1rem;
   color: #212529;
   text-align: left;
-  background-color: #fff;
+  background-color: var(--white);
   border: 0;
   border-radius: 0;
   overflow-anchor: none;
@@ -4922,7 +4922,7 @@ fieldset:disabled .btn {
 }
 
 .accordion-item {
-  background-color: #fff;
+  background-color: var(--white);
   border: 1px solid rgba(0, 0, 0, 0.125);
 }
 .accordion-item:first-of-type {

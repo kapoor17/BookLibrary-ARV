@@ -186,14 +186,14 @@ img {
   position: relative;
 
   width: 100%;
-  color: #212529;
+  color: var(--black);
 
   border: 0;
   border-radius: 0;
   cursor: pointer;
 }
 .current-chapter .accordion-preview {
-  background-color: var(--accent-color-lighter);
+  /* background-color: var(--accent-color-lighter); */
   /* border-radius: 10px; */
 }
 .accordion-item .accordion-body {
@@ -408,7 +408,7 @@ img {
     height: 100%;
     width: 100%;
     background-color: black;
-    opacity: 0.2;
+    opacity: 0.7;
     z-index: -1;
   }
   .large-device-console {

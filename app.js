@@ -164,46 +164,50 @@
 
 
     bookChapters.forEach(chapter=>{
-        // var bottomCounter=0
-        // var topCounter=0
+        var bottomCounter=0
+        var topCounter=0
 
         $(chapter).on("wheel",function(e){
             var delta = e.originalEvent.deltaY;
 
             if(delta>0){
                 /*scrolling down */
-                // topCounter=0;
-                if(!mainBook.classList.contains("reading"))
+                
+                topCounter=0;
+                if(!mainBook.classList.contains("reading")&&bottomCounter==0)
                     mainBook.classList.add("reading");
                 
                 if($(this).scrollTop() + $(this).innerHeight() >= $(this)[0].scrollHeight) {
-                    mainBook.classList.remove("reading");
-                    //if(bottomCounter==0){
-                        // chapterDown.click();
-                        // bottomCounter++;
-                        // setTimeout(()=>{
-                        //     bottomCounter=0;
-                        // },750);
-                    //}
+                    if(bottomCounter==0){
+                        if(mainBook.classList.contains("reading")){
+                            mainBook.classList.remove("reading");
+                            bottomCounter++;
+                        }
+                        return;
+                    }
+                    // if(bottomCounter==0){
+                    //     console.log("bottom");
+
+                    //     // chapterDown.click();
+                    //     bottomCounter++;
+                    // }
                 }
             }
 
             if(delta<0){
                 /*scrolling up */
-                // bottomCounter=0;
-                if(!mainBook.classList.contains("reading"))
-                    mainBook.classList.add("reading");
+                counter=0;
+                if(mainBook.classList.contains)
+                    mainBook.classList.remove("reading");
                 
-                 if($(this).scrollTop()==0){
-                     mainBook.classList.remove("reading");
-                     //if(topCounter==0){
-                        //  chapterUp.click();
-                        //  topCounter++;
-                        //  setTimeout(()=>{
-                        //      topCounter=0;
-                        //  },750);
-                     //}
-                 }
+                //if($(this).scrollTop()==0){
+                    // if(topCounter==0){
+                    //     //   chapterUp.click();
+                    //     if(!mainBook.classList.contains("reading"))
+                    //     mainBook.classList.add("reading");
+                    //     topCounter++;
+                    //  }
+                 //}
 
             }
             if(mainBook.classList.contains("footnote-open"))
