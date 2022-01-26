@@ -178,8 +178,8 @@
             movePage(chapterId);
             mainBook.classList.remove("slide-main-book-out");
             mainBook.classList.add("slide-main-book-in");
+            window.history.pushState({id:1},null,"?asdasd");
             setTimeout(()=>{$(".chapter-content").click();},900)
-            window.history.pushState({id:1},null,"");
         })
 
         $(".chapter-controls").on("click",function(){
@@ -293,8 +293,8 @@
             }
         });          
 
-        window.addEventListener("popstate",detectHistory);
-   
         function detectHistory(){
-            returnButton.click();
+            currentChapter.find('.chapter-content').click();
+            $(".return").click();
         }
+            window.addEventListener("popstate",detectHistory);
