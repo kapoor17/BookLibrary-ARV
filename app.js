@@ -152,7 +152,8 @@
         $(".content-library").bind('touchend', function (e){
             var scrollPos=$(".content-library").scrollTop();
             var te = e.originalEvent.changedTouches[0].clientY;
-            if(ts < te && scrollPos==0 && !scrolled){
+            var difference=Math.abs(te-ts);
+            if(ts < te && scrollPos==0 && !scrolled && difference>50){
                 $(goToTop).click();
             }
             else{
@@ -174,11 +175,11 @@
             chapterId=parseInt($(this).attr("data-chapterId"));
             currentChapter=$(".chapter-cover#ch"+chapterId);
             updateChapterBookmark();
-            pageId=parseInt($(currentChapter).attr("data-pageNo"));
-            movePage(pageId);
+            movePage(chapterId);
             mainBook.classList.remove("slide-main-book-out");
             mainBook.classList.add("slide-main-book-in");
             setTimeout(()=>{$(".chapter-content").click();},900)
+            window.history.pushState({id:1},{},"")
         })
 
         $(".chapter-controls").on("click",function(){
@@ -191,9 +192,28 @@
             movePage(chapterId);
 
         });
-
+        
+        var wheelCheck=false;   
+        var upScroll=false;
+        var downScroll=false;
         function movePage(pageTarget){
-            $(".book-content").css("transform","translateY(-"+(pageTarget-1)*100+"vh)")
+            $(".book-content").css("transform","translateY(-"+(pageTarget-1)*100+"vh)");
+            var chapterContent=currentChapter.find(".chapter-content");
+            chapterContent.scrollTop(0);
+            if($("body").prop("scrollHeight")==chapterContent.prop("scrollHeight") && chapterContent.scrollTop()==0)
+            {
+                setTimeout(function(){
+                    downScroll=true;
+                    wheelCheck=true;
+                },1200);
+                $(".book-content").focus();
+            }
+            setTimeout(function(){
+                wheelCheck=true;
+                upScroll=true;
+            },1200);
+            if(downScroll==false)
+                chapterContent.focus();
         }
         function updateChapterBookmark()
         {
@@ -206,20 +226,75 @@
 
             }
         }
-        var oldScroll=0;
+
         $(".chapter-content").on("scroll",function(e){
             if(!$(this).parent().attr("data-chapterNumber")==chapterId)
                 return;  
-            oldScroll=$(".book-content").scrollTop();
-        });
-        var wheelCheck=true;
-        $(".book-content").on("wheel",function(e){
-            if(!wheelCheck)
-                return;
-            var scrollPos=$('.book-content').scrollTop();
-            if(scrollPos > oldScroll)
+            if(this.scrollHeight <= $(this).innerHeight()+$(this).scrollTop())
             {
-                e.preventDefault();
-
+                setTimeout(function(){
+                    wheelCheck=true;
+                    downScroll=true;
+                },1200);
             }
+            else{
+                wheelCheck=false;
+                downScroll=false;
+            }
+            if($(this).scrollTop()==0){
+                setTimeout(function(){
+                    wheelCheck=true;
+                    upScroll=true;
+                },1200);
+            }
+            else{
+                wheelCheck=false;
+                upScroll=false;
+            }
+            
+        });
+        var loading=false;
+        $(".book-content").on("wheel",function(e){
+            if(wheelCheck==false && upScroll==false && downScroll==false)
+                return;
+            var delta=e.originalEvent.deltaY;
+            if(!loading)
+            {
+                loading=true;
+                if(delta>0 && downScroll && wheelCheck==true)
+                {
+                    $("#next-chapter").click();
+                }
+                else if(delta<0 && upScroll && wheelCheck==true && currentChapter.find(".chapter-content").scrollTop()==0){
+                        $("#prev-chapter").click();
+                }
+                upScroll=false;
+                downScroll=false;
+                wheelCheck=false;
+                loading=false;
+            }
+
         })
+
+        $(".chapter-content").bind('touchstart', function (e){
+            ts = e.originalEvent.touches[0].clientY;
+        });
+    
+        $(".chapter-content").bind('touchend', function (e){
+            var te = e.originalEvent.changedTouches[0].clientY;
+            if(ts < te && upScroll && !scrolled){
+                $("#prev-chapter").click();
+                upScroll=false;
+            }
+            else if(ts > te && downScroll && !scrolled)
+            {
+                $("#next-chapter").click();
+                downScroll=false;
+            }
+        });          
+
+        window.addEventListener("popstate",detectBack);
+
+        function detectBack(e){
+            $(returnButton).click();
+        }

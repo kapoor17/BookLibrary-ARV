@@ -316,7 +316,6 @@ img {
   height: max-content;
   position: absolute;
   background-color: red;
-  position: relative;
   flex-direction: column;
   display: flex;
   transition:all 0.75s ease;
