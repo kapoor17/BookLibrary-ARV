@@ -196,7 +196,7 @@
 
             if(delta<0){
                 /*scrolling up */
-                counter=0;
+                bottomCounter=0;
                 if(mainBook.classList.contains)
                     mainBook.classList.remove("reading");
                 
