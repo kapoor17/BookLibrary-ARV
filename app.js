@@ -223,6 +223,8 @@
         chapter.addEventListener("click",function(){
             if(mainBook.classList.contains("reading"))
                 mainBook.classList.remove("reading");
+            else
+                mainBook.classList.add("reading");
         });
         chapter.addEventListener('touchstart', handleTouchStart, false);        
         chapter.addEventListener('touchmove', handleTouchMove, false);
