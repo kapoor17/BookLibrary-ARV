@@ -106,6 +106,8 @@
     
     returnButton.addEventListener("click",()=>{
         mainBook.classList.remove("slide-main-book-in");
+        if(mainBook.classList.contains("footnote-open"))
+            closeFootnote.click();
     }) 
 
     chapterDown.addEventListener("click",()=>{
@@ -162,69 +164,58 @@
 
 
     bookChapters.forEach(chapter=>{
-        var bottomCounter=0
-        var topCounter=0
+        // var bottomCounter=0
+        // var topCounter=0
 
         $(chapter).on("wheel",function(e){
             var delta = e.originalEvent.deltaY;
 
             if(delta>0){
+                /*scrolling down */
+                // topCounter=0;
+                if(!mainBook.classList.contains("reading"))
+                    mainBook.classList.add("reading");
                 
                 if($(this).scrollTop() + $(this).innerHeight() >= $(this)[0].scrollHeight) {
-                    if(bottomCounter==0){
-                        chapterDown.click();
-                        bottomCounter++;
-                    }
+                    mainBook.classList.remove("reading");
+                    //if(bottomCounter==0){
+                        // chapterDown.click();
+                        // bottomCounter++;
+                        // setTimeout(()=>{
+                        //     bottomCounter=0;
+                        // },750);
+                    //}
                 }
             }
 
             if(delta<0){
+                /*scrolling up */
+                // bottomCounter=0;
+                if(!mainBook.classList.contains("reading"))
+                    mainBook.classList.add("reading");
                 
-                if($(this).scrollTop()==0){
-                    if(topCounter==0){
-                        chapterUp.click();
-                        topCounter++;
-                    }
-                }
+                 if($(this).scrollTop()==0){
+                     mainBook.classList.remove("reading");
+                     //if(topCounter==0){
+                        //  chapterUp.click();
+                        //  topCounter++;
+                        //  setTimeout(()=>{
+                        //      topCounter=0;
+                        //  },750);
+                     //}
+                 }
+
             }
+            if(mainBook.classList.contains("footnote-open"))
+                    closeFootnote.click();
         });
     });
 
-    $(bookChapters).on("wheel",function(e){
-        var delta = e.originalEvent.deltaY;
-        if(delta>0){
-            /* scrolling donw */
-
-            if(mainBook.classList.contains("reading"))
-                return;
-            else
-                mainBook.classList.add("reading");
-
-            if(mainBook.classList.contains("footnote-open"))
-                closeFootnote.click();
-  
-            
-        }
-    });
-
-    $(bookChapters).on("wheel",function(e){
-        var delta = e.originalEvent.deltaY;
-        if(delta<0){
-            /* scrolling up */
-            if(mainBook.classList.contains("reading"))
-                mainBook.classList.remove("reading");
-            
-            if(mainBook.classList.contains("footnote-open"))
-                closeFootnote.click();
-        }
-    });
 
     bookChapters.forEach(chapter=>{
         chapter.addEventListener("click",function(){
             if(mainBook.classList.contains("reading"))
                 mainBook.classList.remove("reading");
-            else
-                mainBook.classList.add("reading");
         });
         chapter.addEventListener('touchstart', handleTouchStart, false);        
         chapter.addEventListener('touchmove', handleTouchMove, false);
@@ -315,9 +306,8 @@
 
 
     const moveChapters=(bookContent,currentChapter,targetChapter)=>{
-        if(mainBook.classList.contains("reading")){
+        if(mainBook.classList.contains("reading"))
             mainBook.classList.remove("reading");
-        }
         bookContent.style.transform="translateY(-"+targetChapter.style.top+")";
         currentChapter.classList.remove("current-chapter");
         targetChapter.classList.add("current-chapter");
