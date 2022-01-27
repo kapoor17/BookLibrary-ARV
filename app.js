@@ -301,7 +301,7 @@
                 }                  
                 if(this.classList.contains("content-library")){
                     if($(this).scrollTop()==0)
-                        goToTopentChild.click();
+                        goToTop.click();
                 }
             }                                                                 
         }
