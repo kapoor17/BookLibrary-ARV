@@ -19,7 +19,9 @@
                     <h1 class="book-title">Book Title</h1>
                     <h3 class="preview-button">Preview</h3>
                 </div>
-                <div class="go-back"><i class="fas fa-arrow-circle-up"></i></div>
+                <div class="go-back">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M13.025 1l-2.847 2.828 6.176 6.176h-16.354v3.992h16.354l-6.176 6.176 2.847 2.828 10.975-11z"></path></svg>
+                </div>
                 <div class="content-library">
                     <div class="accordion accordion-flush" id="accordionFlushExample"t>
                         <div class="chapter-nav accordion-item with-preview">
@@ -186,6 +188,21 @@
                                 </div>
                             </div>
                         </div>
+                        <div class="chapter-nav accordion-item">
+                            <h3 class="accordion-header" id="flush-headingTen">
+                                <p class="accordion-preview collapsed"  data-bs-toggle="collapse" data-bs-target="#flush-collapseTen" aria-expanded="false" aria-controls="flush-collapseTen">
+                                    The New Farm Story-2
+                                </p>
+                            </h3>
+                            <div id="flush-collapseTen" class="accordion-collapse collapse" aria-labelledby="flush-headingTen" data-bs-parent="#accordionFlushExample">
+                                <div class="logged-out accordion-body">
+                                    <p class="chapter-mini-intro">In this chapter you will discover what happens when the idea finally evolves into something...</p>
+                                    <h4 class="payment-prompt">Unlock this entire book and discover</h4>
+                                    <div class="payment-gateway"></div>
+                                    <button class="login-button">Member Login</button>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -193,12 +210,14 @@
         <div class="wrapper" id="main-book">
             <div class="containers">
                 <div class="header">
-                    <i class="fas fa-arrow-circle-left return"></i>
-                    <p class="chapter-title">Title</p>
+                    <span class="return" style="scale: 0.8; transform: rotate(180deg);">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M13.025 1l-2.847 2.828 6.176 6.176h-16.354v3.992h16.354l-6.176 6.176 2.847 2.828 10.975-11z"></path></svg>
+                    </span>
+                    <h4 class="chapter-title">Title</h4>
                 </div>
                 <div class="book-content">
                     <div class="chapters with-preview current-chapter">
-                        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Expedita quas delectus autem molestiae cumque doloribus provident, ex pariatur officia aspernatur iste porro! Facilis iusto illum ratione unde ut cupiditate quos error, ipsa minus<sup class="footnote">1</sup> Lorem ipsum dolor, sit amet consectetur adipisicing elit. Architecto, delectus ipsa maiores voluptas a consectetur molestias reprehenderit placeat corporis voluptatibus. Sint molestias, quod exercitationem neque cum qui tempore ipsam dignissimos porro asperiores eum ut reprehenderit non voluptate adipisci assumenda maxime! Delectus, sint incidunt error eius quam animi cupiditate soluta placeat, accusamus eaque labore beatae illo repellat tempora repudiandae velit non minima aliquam ipsa, dolore doloremque nesciunt earum. Sed ex illum, velit reprehenderit cumque voluptas fuga est ullam quam consequatur similique. Lorem ipsum dolor, sit amet consectetur adipisicing elit. Esse, similique. Reprehenderit delectus optio mollitia amet esse modi, facilis molestias ex earum nobis accusantium, eos beatae, dolores veniam tempora culpa quos architecto distinctio quasi sunt illo voluptate. Nulla voluptas beatae veritatis! Impedit animi quos libero, quod corporis inventore architecto ea molestias, ad eius nulla, veritatis voluptates esse iure cumque id sed nemo dolorem veniam ex. Voluptas exercitationem accusantium voluptate magni cum impedit laborum dolor asperiores voluptatibus similique, esse obcaecati porro totam, quidem officia<sup class="footnote">2</sup> placeat commodi mollitia excepturi cumque rem, rerum ab. Cum saepe nesciunt quidem? Debitis exercitationem mollitia quo dignissimos vitae iure nemo quas iusto amet incidunt, eos voluptatem nam aperiam necessitatibus eveniet reiciendis, ea facere! Quis, tempore. Sunt, dolores molestias ipsa dolor corrupti nostrum voluptas consectetur voluptatum fugiat distinctio quidem qui libero optio unde rem eius repudiandae id sit delectus magnam blanditiis in necessitatibus. Aut rem laboriosam sapiente atque quo cupiditate. Placeat corrupti veritatis modi deserunt molestiae, laborum cupiditate doloribus ipsum sequi eum nam, itaque rerum aspernatur tenetur nulla esse ad dolor ea saepe voluptatem mollitia minus. Magni, repudiandae? Ullam distinctio similique ipsa impedit magni, et maiores saepe, beatae aut veritatis quas ad quis, reprehenderit id dolorem perferendis delectus.
+                        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Expedita quas delectus autem molestiae cumque doloribus provident, ex pariatur officia aspernatur iste porro! Facilis iusto illum ratione unde ut cupiditate quos error, ipsa minus<a class="footnote">1</a> Lorem ipsum dolor, sit amet consectetur adipisicing elit. Architecto, delectus ipsa maiores voluptas a consectetur molestias reprehenderit placeat corporis voluptatibus. Sint molestias, quod exercitationem neque cum qui tempore ipsam dignissimos porro asperiores eum ut reprehenderit non voluptate adipisci assumenda maxime! Delectus, sint incidunt error eius quam animi cupiditate soluta placeat, accusamus eaque labore beatae illo repellat tempora repudiandae velit non minima aliquam ipsa, dolore doloremque nesciunt earum. Sed ex illum, velit reprehenderit cumque voluptas fuga est ullam quam consequatur similique. Lorem ipsum dolor, sit amet consectetur adipisicing elit. Esse, similique. Reprehenderit delectus optio mollitia amet esse modi, facilis molestias ex earum nobis accusantium, eos beatae, dolores veniam tempora culpa quos architecto distinctio quasi sunt illo voluptate. Nulla voluptas beatae veritatis! Impedit animi quos libero, quod corporis inventore architecto ea molestias, ad eius nulla, veritatis voluptates esse iure cumque id sed nemo dolorem veniam ex. Voluptas exercitationem accusantium voluptate magni cum impedit laborum dolor asperiores voluptatibus similique, esse obcaecati porro totam, quidem officia<a class="footnote">2</a> placeat commodi mollitia excepturi cumque rem, rerum ab. Cum saepe nesciunt quidem? Debitis exercitationem mollitia quo dignissimos vitae iure nemo quas iusto amet incidunt, eos voluptatem nam aperiam necessitatibus eveniet reiciendis, ea facere! Quis, tempore. Sunt, dolores molestias ipsa dolor corrupti nostrum voluptas consectetur voluptatum fugiat distinctio quidem qui libero optio unde rem eius repudiandae id sit delectus magnam blanditiis in necessitatibus. Aut rem laboriosam sapiente atque quo cupiditate. Placeat corrupti veritatis modi deserunt molestiae, laborum cupiditate doloribus ipsum sequi eum nam, itaque rerum aspernatur tenetur nulla esse ad dolor ea saepe voluptatem mollitia minus. Magni, repudiandae? Ullam distinctio similique ipsa impedit magni, et maiores saepe, beatae aut veritatis quas ad quis, reprehenderit id dolorem perferendis delectus.
                         Lorem ipsum dolor, sit amet consectetur adipisicing elit. Voluptas quia eum minus repellat autem provident, corporis vero repellendus incidunt perspiciatis ratione veritatis eaque aliquid, sapiente cupiditate iste. Est architecto dignissimos ab voluptas nisi corrupti voluptatem adipisci porro consectetur assumenda ad quasi laboriosam itaque culpa molestiae vel, aut error rerum nobis. Doloribus magni tenetur ipsam delectus iusto amet voluptates odio, modi natus distinctio ut consectetur sint vitae quos, in voluptatum dignissimos perspiciatis eum mollitia, rerum quo exercitationem. Earum fugiat dicta esse error? Tempore tempora eum natus, consequatur eveniet id ab aliquid voluptatem, maiores harum praesentium. Ipsum neque aliquid doloribus eum commodi repellendus nesciunt eveniet delectus assumenda natus quaerat necessitatibus iusto aperiam excepturi inventore exercitationem quidem dolorem, vero ipsa nulla odio. Explicabo, provident odit. Libero debitis, dolorem, quaerat voluptates beatae officia dicta ex illum dolor ullam itaque quia suscipit natus neque fugit temporibus corrupti rem esse? Impedit mollitia adipisci rerum, aspernatur laudantium rem molestiae, debitis distinctio et repellat totam eum odit voluptatum, voluptas magni modi labore vel officiis aliquam hic illum! Illum sed nihil, autem voluptates accusantium consectetur vero molestiae a fuga, fugit, eum assumenda. Voluptatibus expedita quae totam voluptate autem at rem. Voluptas voluptate, iusto distinctio perferendis expedita aperiam asperiores dignissimos?
                     </div>
                     <div class="chapters">
@@ -241,8 +260,8 @@
                 <div class="footer">
                     <div class="controls">
                         <div class="arrows">
-                            <i class="fas fa-arrow-circle-up chapter-up"></i>
-                            <i class="fas fa-arrow-circle-down chapter-down"></i>
+                            <span class="chapter-up">Prev Chapter</span>
+                            <span class="chapter-down">Next Chapter</span>
                         </div>
                         <div class="close-footnote d-none">
                             <i class="fas fa-times-circle"></i>

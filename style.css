@@ -152,14 +152,14 @@ img {
 
   overflow: scroll;
 }
-.go-back i {
-  transform: rotate(0deg);
+.go-back > svg {
+  transform: rotate(90deg);
   transition: all 0.5s ease;
-
+  scale: 0.8;
   cursor: pointer;
 }
-.fixed i {
-  transform: rotate(-180deg);
+.fixed > svg {
+  transform: rotate(270deg);
 }
 .content-library,
 .accordion-item,
@@ -295,6 +295,8 @@ img {
 }
 .header > *,
 .close-footnote > * {
+  margin-top: 0;
+  margin-bottom: 0;
   margin-right: auto;
 }
 .header .return,
@@ -322,27 +324,16 @@ img {
 .footnote-open .footer {
   top: calc(var(--height-big) / 2) !important;
 }
-/* .footnote-open .book-content::after {
-  content: "";
-  height: 100%;
-  width: 100%;
-  background-color: black;
-  opacity: 0.2;
-
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-} */
 .controls .arrows,
 .controls .close-footnote {
   display: flex;
   justify-content: space-around;
   align-items: center;
 }
-.controls .arrows i {
+.controls .arrows span {
   cursor: pointer;
+  width: 50%;
+  text-align: center;
 }
 .book-content {
   height: 100%;
@@ -380,6 +371,9 @@ img {
 }
 .chapters .footnote {
   cursor: pointer;
+  text-decoration: none;
+  vertical-align: super;
+  font-size: 0.85rem;
 }
 .foot-notes {
   height: calc(var(--height-big) / 2;);

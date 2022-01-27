@@ -63,16 +63,17 @@
             
             if($(this).scrollTop()==0){
                 if(topCounter==0){
-                    goToTop.firstElementChild.click();
+                    goToTop.click();
                     topCounter++;
                 }
             }
         }
     });
 
-    goToTop.firstElementChild.addEventListener("click",()=>{
+    goToTop.addEventListener("click",()=>{
         goToTop.classList.remove("fixed");
         setTimeout(() => {
+            $(".accordion-collapse.show").removeClass("show");
             accordionCover.classList.remove("variable-height-class");
         }, 300);
     })
@@ -165,7 +166,6 @@
 
     bookChapters.forEach(chapter=>{
         var bottomCounter=0
-        var topCounter=0
 
         $(chapter).on("wheel",function(e){
             var delta = e.originalEvent.deltaY;
@@ -218,18 +218,21 @@
 
     bookChapters.forEach(chapter=>{
         chapter.addEventListener("click",function(){
-            if(mainBook.classList.contains("reading"))
-                mainBook.classList.remove("reading");
+                mainBook.classList.toggle("reading");
+                if(mainBook.classList.contains("footnote-open"))
+                    closeFootnote.click();
         });
         chapter.addEventListener('touchstart', handleTouchStart, false);        
         chapter.addEventListener('touchmove', handleTouchMove, false);
     })
 
-    footnotes.forEach(footnote=>{
-        footnote.addEventListener("click",()=>{
+    footnotes.forEach((footnote)=>{
+        footnote.addEventListener("click",(e)=>{
             mainBook.classList.add("footnote-open");
             arrows.classList.add("d-none");
             closeFootnote.classList.remove("d-none");
+
+            e.stopPropagation();
         })
     })
 
@@ -295,11 +298,10 @@
                         chapterUp.click();
                     if(mainBook.classList.contains("footnote-open"))
                         closeFootnote.click();
-                }   
-                
+                }                  
                 if(this.classList.contains("content-library")){
                     if($(this).scrollTop()==0)
-                        goToTop.firstElementChild.click();
+                        goToTopentChild.click();
                 }
             }                                                                 
         }
@@ -310,6 +312,7 @@
 
 
     const moveChapters=(bookContent,currentChapter,targetChapter)=>{
+        targetChapter.scrollTo(0,0);
         if(mainBook.classList.contains("reading"))
             mainBook.classList.remove("reading");
         bookContent.style.transform="translateY(-"+targetChapter.style.top+")";
